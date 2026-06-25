@@ -1,0 +1,28 @@
+Happiness Listing improved readability of the happiness dialogue and adds automatic happiness preference information in the Bestiary.
+
+### The happiness dialogue has been improved:
+* Line breaks for each entry so the entries aren't one giant wall of text.
+* Icons before each entry that tell you if the entry makes the Town NPC happy or sad.
+* The icons can be customized with many options.
+* Color each dialogue line based on if the entry makes the Town NPC happy or sad.
+* Dialogue entries can be replaced with simplified, generic dialogue.
+* Works with vanilla and modded Town NPCs.
+
+### Automatic happiness information in the Bestiary:
+* An addition info box is added that tells you the Town NPC's living preferences including biomes and other Town NPCs.
+* Each category can be customized with many options.
+* Works with vanilla and modded Town NPCs.
+
+### Increase the max number of lines for dialogue:
+* Vanilla limits the number of lines that can be shown to 10. Anything beyond 10 lines will be cut off. With this mod you can increase that up to 20!
+
+### Increase the number of Town NPCs the Princess can talk about at one time:
+* Vanilla limits the number of Town NPCs the Princess can talk about at one time to 3. That means you need to keep closing and opening her happiness menu to randomly see all of her dialogue. With this mod you can increase the number up to 20!
+
+Everything about this mod can be customized in the config!
+
+This mod is client sided.
+
+Install my other mod, Scaling Crowdedness, to change how many Town NPCs can be nearby before they start to get angry!
+
+By Rijam
