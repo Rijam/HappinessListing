@@ -1,0 +1,9 @@
+displayName = Happiness Listing
+author = Rijam
+version = 1.0
+homepage = https://github.com/Rijam/HappinessListing
+buildIgnore = .vs\*, obj\*, bin\*, *.xcf, .git\*, git\*, Effects\fxcompiler.exe
+hideCode = false
+hideResources = false
+includeSource = true
+side = Client

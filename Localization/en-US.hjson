@@ -1,0 +1,548 @@
+Mods: {
+	HappinessListing: {
+		Configs: {
+			HappinessListingConfig: {
+				DisplayName: Client Options
+
+				Headers: {
+					DialogueOptions: "[c/00FF00:Dialogue Options]"
+					BestiaryOptions: "[c/00FF00:Bestiary Options]"
+				}
+
+				BreakEntriesWithNewLine: {
+					Label: "[i:LaserRuler] Break Entries With New Line"
+					Tooltip:
+						'''
+						Each dialogue entry will be placed on a new line.
+
+						Change to "Off" for vanilla behavior.
+						Default by mod: "On"
+						'''
+				}
+
+				EntryIconType: {
+					Label: "[hlhi:love]  Entry Icon Type"
+					Tooltip:
+						'''
+						Each dialogue entry will be preceded with a character or icon.
+
+						Change to "None" for vanilla behavior.
+						Default by mod: "Happiness Icons"
+						'''
+				}
+
+				MaxTextLines: {
+					Label: "[i:ThePlan] Maximum Text Lines"
+					# 	TML145
+					# 	'''
+					#	Increases or decreases the number of lines the dialogue can be on.
+					#	Anything line beyond the value set will be cut off.
+					#	Vanilla defaults to 10.
+					#
+					#	Range: 1-50
+					#	Change to 10 for vanilla behavior.
+					#	Default by mod: 20
+					#	'''
+					Tooltip:
+						'''
+						Increases or decreases the number of lines the dialogue can be on.
+						Anything line beyond the value set will be cut off.
+						Vanilla defaults to 10.
+
+						Range: 1-20
+						Change to 10 for vanilla behavior.
+						Default by mod: 16
+						'''
+				}
+
+				ColorCodeText: {
+					Label: "[i:RedPaint] Color Code Dialogue"
+					Tooltip:
+						'''
+						Colors each dialogue entry.
+
+						Change to "None" for vanilla behavior.
+						Default by mod: "None"
+						'''
+				}
+
+				MaxNumberOfPeoplePrincessCanTalkAboutAtOnce: {
+					Label: "[i:PrincessWeapon] Princess Dialogue Maximum"
+					Tooltip:
+						'''
+						Increases or decreases the number of Town NPCs the Princess can talk about at once.
+						In vanilla, the Princess will only talk about three random nearby Town NPCs
+						  each time the happiness button is clicked.
+
+						Range: 1-20
+						Change to 3 for vanilla behavior.
+						Default by mod: 5
+						'''
+				}
+
+				SimplifiedHappinessDialogue: {
+					Label: "[i:NecromanticScroll] Simplified Happiness Dialogue"
+					Tooltip:
+						'''
+						Replaces all happiness dialogue with simple, generic dialogue.
+						  For example: "I love {NPC}." "I dislike {Biome}." "I dislike how crowded I am."
+
+						Change to Off for vanilla behavior.
+						Default by mod: Off
+						'''
+				}
+
+				BestiaryFlavorTextEntry: {
+					Label: "[i:DontHurtNatureBook] Bestiary Happiness Info Box"
+					Tooltip:
+						'''
+						Adds an addition info box in the Town NPCs' Bestiary entry with the happiness preferences.
+						  Not shown in the info box:
+						  * All Town NPCs like the Princess.
+						  * All Town NPCs hate the Corruption, Crimson, and Dungeon.
+
+						Change to "None" for vanilla behavior.
+						Default by mod: Happiness Icons
+
+						Reload is required to re-initialize the Bestiary. Change this setting from the main menu.
+						'''
+				}
+			}
+
+			IconType: {
+				Tooltip: ""
+
+				None: {
+					Label: None
+					Tooltip:
+						'''
+						{$Label}
+
+						No characters or icons will precede each dialogue entry.
+						Set to this for vanilla behavior or to turn this feature off.
+						'''
+				}
+
+				Asterick: {
+					Label: Asterick
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with an *
+						'''
+				}
+
+				Bullet: {
+					Label: Bullet
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with a •
+						'''
+				}
+
+				Emoticons: {
+					Label: Emoticons
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with emoticons that reflect the preference of the entry:
+						  {$UI.HappinessWords.Love}    :D
+						  {$UI.HappinessWords.Like}    :)
+						  {$UI.HappinessWords.Dislike} :(
+						  {$UI.HappinessWords.Hate}    :'(
+						'''
+				}
+
+				HappinessIcon: {
+					Label: Happiness Icons
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with icons that reflect the preference of the entry:
+						  {$UI.HappinessWords.Love}    [hlhi:love]
+						  {$UI.HappinessWords.Like}    [hlhi:like]
+						  {$UI.HappinessWords.Dislike} [hlhi:disl]
+						  {$UI.HappinessWords.Hate}    [hlhi:hate]
+						'''
+				}
+
+				RightArrow: {
+					Label: Right Arrow
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with a →
+						'''
+				}
+
+				GreaterThan: {
+					Label: Greater Than
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with a >
+						'''
+				}
+
+				Tilde: {
+					Label: Tilde
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with a ~
+						'''
+				}
+
+				ChecksAndXs: {
+					Label: Checks And X's
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with check marks and x's that reflect the preference of the entry:
+						  {$UI.HappinessWords.Love}    ✔
+						  {$UI.HappinessWords.Like}    ✓
+						  {$UI.HappinessWords.Dislike} ✗
+						  {$UI.HappinessWords.Hate}    ✘
+						'''
+				}
+
+				Potions: {
+					Label: Potions
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with potions that reflect the preference of the entry:
+						  {$UI.HappinessWords.Love}    [i:2352]
+						  {$UI.HappinessWords.Like}    [i:293]
+						  {$UI.HappinessWords.Dislike} [i:2353]
+						  {$UI.HappinessWords.Hate}    [i:678]
+						'''
+				}
+
+				Pickaxes: {
+					Label: Pickaxes
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with pickaxes that reflect the preference of the entry:
+						  {$UI.HappinessWords.Love}    [i:2786]
+						  {$UI.HappinessWords.Like}    [i:990]
+						  {$UI.HappinessWords.Dislike} [i:103]
+						  {$UI.HappinessWords.Hate}    [i:3509]
+						'''
+				}
+
+				MathSymbols: {
+					Label: Math Symbols
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with symbols that reflect the preference of the entry:
+						  {$UI.HappinessWords.Love}    ×
+						  {$UI.HappinessWords.Like}    +
+						  {$UI.HappinessWords.Dislike} -
+						  {$UI.HappinessWords.Hate}    ÷
+						'''
+				}
+			}
+
+			ColorCoding: {
+				Tooltip: ""
+
+				None: {
+					Label: None
+					Tooltip:
+						'''
+						{$Label}
+
+						The happiness dialogue will the default color of white.
+						Set to this for vanilla behavior or to turn this feature off.
+						'''
+				}
+
+				HappinessYGBP: {
+					Label: In-game Colors
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be words with colors based on the Happiness Icons.
+						  [c/f2d45a:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+						  [c/9de997:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+						  [c/97dbe4:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+						  [c/bbb2e3:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						'''
+				}
+
+				HappinessGYOR: {
+					Label: Wiki Colors
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be words with colors based on the happiness infoboxes on the wiki.
+						  [c/b3f2b3:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+						  [c/ddf2b3:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+						  [c/f2e0b3:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+						  [c/f2b5b3:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						'''
+				}
+
+				HappinessGrayscale: {
+					Label: Grayscale
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be words that get more gray.
+						  [c/ffffff:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+						  [c/dddddd:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+						  [c/bbbbbb:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+						  [c/999999:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						'''
+				}
+
+				HappinessDialogPanelRework: {
+					Label: Rework Colors
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be words that match the colors used in the Dialogue Panel Rework mod.
+						  [c/7CFC00:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+						  [c/6495ED:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+						  [c/DE8787:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+						  [c/C71585:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						'''
+				}
+			}
+
+			BestiaryPreferencesEntry: {
+				Tooltip: ""
+
+				None: {
+					Label: None
+					Tooltip:
+						'''
+						{$Label}
+
+						No addition info box will be added in the Bestiary.
+						Set to this for vanilla behavior or to turn this feature off.
+						'''
+				}
+
+				TextYGBP: {
+					Label: Text In-game Colors
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be words with colors based on the Happiness Icons.
+						  [c/f2d45a:{$Mods.HappinessListing.UI.HappinessWords.Love}]:
+						  [c/9de997:{$Mods.HappinessListing.UI.HappinessWords.Like}]:
+						  [c/97dbe4:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]:
+						  [c/bbb2e3:{$Mods.HappinessListing.UI.HappinessWords.Hate}]:
+						'''
+				}
+
+				TextGYOR: {
+					Label: Text Wiki Colors
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be words with colors based on the happiness infoboxes on the wiki.
+						  [c/b3f2b3:{$Mods.HappinessListing.UI.HappinessWords.Love}]:
+						  [c/ddf2b3:{$Mods.HappinessListing.UI.HappinessWords.Like}]:
+						  [c/f2e0b3:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]:
+						  [c/f2b5b3:{$Mods.HappinessListing.UI.HappinessWords.Hate}]:
+						'''
+				}
+
+				TextGrayscale: {
+					Label: Text Grayscale
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be words that get more gray.
+						  [c/ffffff:{$Mods.HappinessListing.UI.HappinessWords.Love}]:
+						  [c/dddddd:{$Mods.HappinessListing.UI.HappinessWords.Like}]:
+						  [c/bbbbbb:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]:
+						  [c/999999:{$Mods.HappinessListing.UI.HappinessWords.Hate}]:
+						'''
+				}
+
+				TextDialogPanelRework: {
+					Label: Text Rework Colors
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be words that match the colors used in the Dialogue Panel Rework mod.
+						  [c/7CFC00:{$Mods.HappinessListing.UI.HappinessWords.Love}]:
+						  [c/6495ED:{$Mods.HappinessListing.UI.HappinessWords.Like}]:
+						  [c/DE8787:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]:
+						  [c/C71585:{$Mods.HappinessListing.UI.HappinessWords.Hate}]:
+						'''
+				}
+
+				Emoticons: {
+					Label: Emoticons
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be emoticons.
+						  {$UI.HappinessWords.Love}    :D
+						  {$UI.HappinessWords.Like}    :)
+						  {$UI.HappinessWords.Dislike} :(
+						  {$UI.HappinessWords.Hate}    :'(
+						'''
+				}
+
+				ChecksAndXs: {
+					Label: Checks And Xs
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be check marks and x's.
+						  {$UI.HappinessWords.Love}    ✔
+						  {$UI.HappinessWords.Like}    ✓
+						  {$UI.HappinessWords.Dislike} ✗
+						  Hate    ✘
+						'''
+				}
+
+				HappinessIcon: {
+					Label: Happiness Icons
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be Happiness Icons.
+						  {$UI.HappinessWords.Love}    [hlhi:love]
+						  {$UI.HappinessWords.Like}    [hlhi:like]
+						  {$UI.HappinessWords.Dislike} [hlhi:disl]
+						  {$UI.HappinessWords.Hate}    [hlhi:hate]
+						'''
+				}
+
+				Potions: {
+					Label: Potions
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be potions.
+						  {$UI.HappinessWords.Love}    [i:2352]
+						  {$UI.HappinessWords.Like}    [i:293]
+						  {$UI.HappinessWords.Dislike} [i:2353]
+						  {$UI.HappinessWords.Hate}    [i:678]
+						'''
+				}
+
+				Pickaxes: {
+					Label: Pickaxes
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be pickaxes.
+						  {$UI.HappinessWords.Love}    [i:2786]
+						  {$UI.HappinessWords.Like}    [i:990]
+						  {$UI.HappinessWords.Dislike} [i:103]
+						  {$UI.HappinessWords.Hate}    [i:3509]
+						'''
+				}
+
+				MathSymbols: {
+					Label: Math Symbols
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be math symbols.
+						  {$UI.HappinessWords.Love}    ×
+						  {$UI.HappinessWords.Like}    +
+						  {$UI.HappinessWords.Dislike} -
+						  {$UI.HappinessWords.Hate}    ÷
+						'''
+				}
+			}
+
+			SimplifiedDialogueSetting: {
+				Tooltip: ""
+
+				Off: {
+					Label: Off
+					Tooltip:
+						'''
+						{$Label}
+
+						All Town NPCs will use their happiness dialogue like normal.
+						Set to this for vanilla behavior or to turn this feature off.
+						'''
+				}
+
+				VanillaOnly: {
+					Label: Vanilla Only
+					Tooltip:
+						'''
+						{$Label}
+
+						Only vanilla Town NPCs will have simplified happiness dialogue.
+						'''
+				}
+
+				ModdedOnly: {
+					Label: Modded Only
+					Tooltip:
+						'''
+						{$Label}
+
+						Only modded Town NPCs will have simplified happiness dialogue.
+						'''
+				}
+
+				All: {
+					Label: All
+					Tooltip:
+						'''
+						{$Label}
+
+						All Town NPCs will have simplified happiness dialogue.
+						'''
+				}
+			}
+		}
+
+		UI: {
+			HappinessWords: {
+				Love: Love
+				Like: Like
+				Dislike: Dislike
+				Hate: Hate
+				None: None
+				RetreivalError: Could not retrieve happiness preferences.
+				PrincessLovesAll: The {$NPCName.Princess} loves all Town NPCs.
+			}
+		}
+	}
+}
+
+# Simple, generic happiness dialogue for the Princess.
+TownNPCMood.HateLonely: I hate being lonely.
