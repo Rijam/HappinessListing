@@ -14,7 +14,7 @@ Automatic happiness information in the Bestiary:
 • Works with vanilla and modded Town NPCs.
 
 Increase the max number of lines for dialogue:
-• Vanilla limits the number of lines that can be shown to 10. Anything beyond 10 lines will be cut off. With this mod you can increase that up to 20!
+• Vanilla limits the number of lines that can be shown to 10. Anything beyond 10 lines will be cut off. With this mod you can increase that up to 50!
 
 Increase the number of Town NPCs the Princess can talk about at one time:
 • Vanilla limits the number of Town NPCs the Princess can talk about at one time to 3. That means you need to keep closing and opening her happiness menu to randomly see all of her dialogue. With this mod you can increase the number up to 20!

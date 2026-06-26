@@ -43,15 +43,25 @@ Mods: {
 					#	Change to 10 for vanilla behavior.
 					#	Default by mod: 20
 					#	'''
+					# 	TML144
+					# 	'''
+					#	Increases or decreases the number of lines the dialogue can be on.
+					#	Anything line beyond the value set will be cut off.
+					#	Vanilla defaults to 10.
+					#
+					#	Range: 1-20
+					#	Change to 10 for vanilla behavior.
+					#	Default by mod: 16
+					#	'''
 					Tooltip:
 						'''
 						Increases or decreases the number of lines the dialogue can be on.
 						Anything line beyond the value set will be cut off.
 						Vanilla defaults to 10.
 
-						Range: 1-20
+						Range: 1-50
 						Change to 10 for vanilla behavior.
-						Default by mod: 16
+						Default by mod: 20
 						'''
 				}
 

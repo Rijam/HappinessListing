@@ -19,7 +19,7 @@ Happiness Listing improved readability of the happiness dialogue and adds automa
 
 [h3] Increase the max number of lines for dialogue [/h3]
 [list]
-[*] Vanilla limits the number of lines that can be shown to 10. Anything beyond 10 lines will be cut off. With this mod you can increase that up to 20!
+[*] Vanilla limits the number of lines that can be shown to 10. Anything beyond 10 lines will be cut off. With this mod you can increase that up to 50!
 [/list]
 
 [h3] Increase the number of Town NPCs the Princess can talk about at one time [/h3]

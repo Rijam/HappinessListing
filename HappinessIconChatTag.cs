@@ -79,10 +79,10 @@ namespace HappinessListing
 
 				int frameX = iconIndex;
 
-#if TML145
 				Texture2D happinessIcons = TextureAssets.NPCHappiness.Value;
-#endif
+#if TML144
 				Texture2D happinessIcons = ModContent.GetInstance<HappinessListing>().NPCHappinessTexture.Value;
+#endif
 				spriteBatch.Draw(happinessIcons, position, happinessIcons.Frame(4, 1, frameX, 0), color, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
 
 				// ModContent.GetInstance<HappinessListing>().Logger.Debug($"DRAWING!! frameX {frameX} color {color}");

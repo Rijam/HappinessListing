@@ -11,13 +11,17 @@ namespace HappinessListing
 {
 	public class HappinessListing : Mod
 	{
+#if TML144
 		/// <summary> 1.4.5 Asset for the Happiness icons </summary>
 		public Asset<Texture2D> NPCHappinessTexture;
+#endif
 
 		public override void Load()
 		{
 			ChatManager.Register<HappinessIconChatTag>(HappinessIconChatTag.HLHappinessIcon);
+#if TML144
 			NPCHappinessTexture ??= Main.Assets.Request<Texture2D>("Images\\UI\\NPCHappiness", AssetRequestMode.AsyncLoad); // Load the Happiness icons from vanilla 1.4.5
+#endif
 		}
 
 		public override void Unload()

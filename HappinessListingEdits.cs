@@ -17,15 +17,19 @@ namespace HappinessListing
 	{
 		public override void Load()
 		{
+#if TML144
 			Terraria.GameContent.On_ShopHelper.AddHappinessReportText += On_ShopHelper_AddHappinessReportText;
-#if TML145
+#endif
 			MethodInfo method_AddHappinessReportText = typeof(ShopHelper).GetMethod("AddHappinessReportText", BindingFlags.Instance | BindingFlags.NonPublic);
 			MethodInfo method_AddHappinessReportTextWithKey = typeof(ShopHelper).GetMethod("AddHappinessReportTextWithKey", BindingFlags.Instance | BindingFlags.NonPublic);
 			MonoModHooks.Add(method_AddHappinessReportText, On_ShopHelper_AddHappinessReportText);
 			MonoModHooks.Add(method_AddHappinessReportTextWithKey, On_ShopHelper_AddHappinessReportTextWithKey);
-			IL_TextDisplayCache.PrepareCache += IL_TextDisplayCache_PrepareCache;
-#endif
+			MethodInfo method_PrepareCache = typeof(TextDisplayCache).GetMethod("PrepareCache", BindingFlags.Instance | BindingFlags.Public);
+			MonoModHooks.Modify(method_PrepareCache, IL_TextDisplayCache_PrepareCache);
+			// IL_TextDisplayCache.PrepareCache += IL_TextDisplayCache_PrepareCache;
+#if TML144
 			Terraria.IL_Main.TextDisplayCache.PrepareCache += TextDisplayCache_PrepareCache;
+#endif
 			Terraria.GameContent.Personalities.IL_AllPersonalitiesModifier.ModifyShopPrice_Relationships += IL_AllPersonalitiesModifier_ModifyShopPrice_Relationships;
 
 			// On_TextDisplayCache.PrepareCache += On_TextDisplayCache_PrepareCache;
@@ -160,7 +164,7 @@ namespace HappinessListing
 		}
 		*/
 
-		private void TextDisplayCache_PrepareCache(ILContext il)
+		private void IL_TextDisplayCache_PrepareCache(ILContext il)
 		{
 			Type type_Main_TextDisplayCache = typeof(Main).GetNestedType("TextDisplayCache", BindingFlags.NonPublic);
 
@@ -190,8 +194,7 @@ namespace HappinessListing
 			c.Emit(OpCodes.Ldc_I4, ModContent.GetInstance<HappinessListingConfig>().MaxTextLines); // Push the config value in its place.
 		}
 
-#if TML145
-
+#if Disabled
 		/// <summary>
 		/// Does 2 IL edits to change the width and the max lines of the dialogue panel.
 		/// </summary>
@@ -264,7 +267,6 @@ namespace HappinessListing
 				return ModContent.GetInstance<HappinessListingConfig>().MaxTextLines;
 			});
 		}
-
 #endif
 
 		/// <summary>
@@ -360,6 +362,7 @@ namespace HappinessListing
 			return (ConcurrentDictionary<string, ITagHandler>)Field__handlers.GetValue(null);
 		}
 
+#if TML144
 		/// <summary>
 		/// Detours the method that adds the dialogue entry to the happiness menu.
 		/// </summary>
@@ -372,8 +375,8 @@ namespace HappinessListing
 			}
 			LineEntryModifications.ApplyPostEntryModifications();
 		}
+#endif
 
-#if TML145
 		private delegate void orig_AddHappinessReportText(ShopHelper self, string textKeyInCategory, object substitutes = null);
 
 		/// <summary>
@@ -403,7 +406,5 @@ namespace HappinessListing
 			}
 			LineEntryModifications.ApplyPostEntryModifications();
 		}
-
-#endif
 	}
 }

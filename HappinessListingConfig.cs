@@ -16,19 +16,19 @@ namespace HappinessListing
 		[DefaultValue(IconType.HappinessIcon)]
 		public IconType EntryIconType { get; set; }
 
-#if TML145
 		[Range(1, 50)]
 		[DefaultValue(20)]
-#endif
+#if TML144
 		// 1.4.4: The GUI looks weird with more than 16 lines and only 20 lines can render.
 		[Range(1, 20)]
 		[DefaultValue(16)]
+#endif
 		[Slider]
 		public int MaxTextLines { get; set; }
 
 		[DefaultValue(ColorCoding.HappinessYGBP)]
 		// [JsonIgnore]
-		public ColorCoding ColorCodeText { get; set; } // 1.4.5: Disabled for now because the color chat tags break on new lines.
+		public ColorCoding ColorCodeText { get; set; }
 
 		[Range(1, 20)]
 		[DefaultValue(5)]
