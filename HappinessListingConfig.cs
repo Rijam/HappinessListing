@@ -8,7 +8,7 @@ namespace HappinessListing
 	{
 		public override ConfigScope Mode => ConfigScope.ClientSide;
 
-		[Header("DialogueOptions")]
+		[Header("HappinessDialogueOptions")]
 
 		[DefaultValue(true)]
 		public bool BreakEntriesWithNewLine { get; set; }
@@ -28,7 +28,7 @@ namespace HappinessListing
 
 		[DefaultValue(ColorCoding.HappinessYGBP)]
 		// [JsonIgnore]
-		public ColorCoding ColorCodeText { get; set; } // 1.4.5: Disabled for now because the color chat tags break on new lines.
+		public ColorCoding ColorCodeHappinessText { get; set; } // 1.4.5: Disabled for now because the color chat tags break on new lines.
 
 		[Range(1, 20)]
 		[DefaultValue(5)]
@@ -37,6 +37,11 @@ namespace HappinessListing
 
 		[DefaultValue(SimplifiedDialogueSetting.Off)]
 		public SimplifiedDialogueSetting SimplifiedHappinessDialogue { get; set; }
+
+		[Header("RegularDialogueOptions")]
+
+		[DefaultValue(ColorCoding.None)]
+		public ColorCoding ColorCodeRegularDialogue { get; set; }
 
 		[Header("BestiaryOptions")]
 
@@ -57,7 +62,10 @@ namespace HappinessListing
 			HappinessIcon,
 			Potions,
 			Pickaxes,
-			MathSymbols
+			MathSymbols,
+			Statues,
+			HeartsAndSkulls,
+			Paintings
 		}
 
 		public enum ColorCoding
@@ -66,7 +74,8 @@ namespace HappinessListing
 			HappinessYGBP,
 			HappinessGYOR,
 			HappinessGrayscale,
-			HappinessDialogPanelRework
+			HappinessDialogPanelRework,
+			HappinessVibrant
 		}
 
 		public enum BestiaryPreferencesEntry
@@ -76,12 +85,16 @@ namespace HappinessListing
 			TextGYOR,
 			TextGrayscale,
 			TextDialogPanelRework,
+			TextVibrant,
 			Emoticons,
 			ChecksAndXs,
 			HappinessIcon,
 			Potions,
 			Pickaxes,
-			MathSymbols
+			MathSymbols,
+			Statues,
+			HeartsAndSkulls,
+			Paintings
 		}
 
 		public enum SimplifiedDialogueSetting

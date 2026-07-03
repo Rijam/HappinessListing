@@ -5,7 +5,8 @@ Mods: {
 				DisplayName: Client Options
 
 				Headers: {
-					DialogueOptions: "[c/00FF00:Dialogue Options]"
+					HappinessDialogueOptions: "[c/00FF00:Happiness Dialogue Options]"
+					RegularDialogueOptions: "[c/00FF00:Regular Dialogue Options]"
 					BestiaryOptions: "[c/00FF00:Bestiary Options]"
 				}
 
@@ -55,14 +56,14 @@ Mods: {
 						'''
 				}
 
-				ColorCodeText: {
-					Label: "[i:RedPaint] Color Code Dialogue"
+				ColorCodeHappinessText: {
+					Label: "[i:RedPaint] Color Code Happiness Dialogue"
 					Tooltip:
 						'''
-						Colors each dialogue entry.
+						Colors each happiness dialogue entry.
 
 						Change to "None" for vanilla behavior.
-						Default by mod: "None"
+						Default by mod: "In-game Colors"
 						'''
 				}
 
@@ -89,6 +90,17 @@ Mods: {
 
 						Change to Off for vanilla behavior.
 						Default by mod: Off
+						'''
+				}
+
+				ColorCodeRegularDialogue: {
+					Label: "[i:BluePaint] Color Code Regular Dialogue"
+					Tooltip:
+						'''
+						Colors each regular dialogue entry.
+
+						Change to "None" for vanilla behavior.
+						Default by mod: "None"
 						'''
 				}
 
@@ -256,6 +268,48 @@ Mods: {
 						  {$UI.HappinessWords.Hate}    ÷
 						'''
 				}
+
+				Statues: {
+					Label: Statues
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with symbols that reflect the preference of the entry:
+						  {$UI.HappinessWords.Love}    [i:HeartStatue]
+						  {$UI.HappinessWords.Like}    [i:StarStatue]
+						  {$UI.HappinessWords.Dislike} [i:ImpStatue]
+						  {$UI.HappinessWords.Hate}    [i:GloomStatue]
+						'''
+				}
+
+				HeartsAndSkulls: {
+					Label: Hearts And Skulls
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with symbols that reflect the preference of the entry:
+						  {$UI.HappinessWords.Love}    [i:Heart]
+						  {$UI.HappinessWords.Like}    [i:Star]
+						  {$UI.HappinessWords.Dislike} [i:LivingFireBlock]
+						  {$UI.HappinessWords.Hate}    [i:Skull]
+						'''
+				}
+
+				Paintings: {
+					Label: Paintings
+					Tooltip:
+						'''
+						{$Label}
+
+						Dialogue entries will be preceded with symbols that reflect the preference of the entry:
+						  {$UI.HappinessWords.Love}    [i:1482]
+						  {$UI.HappinessWords.Like}    [i:5248]
+						  {$UI.HappinessWords.Dislike} [i:4723]
+						  {$UI.HappinessWords.Hate}    [i:1475]
+						'''
+				}
 			}
 
 			ColorCoding: {
@@ -327,6 +381,20 @@ Mods: {
 						  [c/C71585:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
 						'''
 				}
+
+				HappinessVibrant: {
+					Label: Vibrant Colors
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be words that are vibrant green to red.
+						  [c/00FF00:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+						  [c/FFFF00:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+						  [c/FF7F00:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+						  [c/FF0000:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						'''
+				}
 			}
 
 			BestiaryPreferencesEntry: {
@@ -396,6 +464,20 @@ Mods: {
 						  [c/6495ED:{$Mods.HappinessListing.UI.HappinessWords.Like}]:
 						  [c/DE8787:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]:
 						  [c/C71585:{$Mods.HappinessListing.UI.HappinessWords.Hate}]:
+						'''
+				}
+
+				TextVibrant: {
+					Label: Text Vibrant Colors
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be words that are vibrant green to red.
+						  [c/00FF00:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+						  [c/FFFF00:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+						  [c/FF7F00:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+						  [c/FF0000:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
 						'''
 				}
 
@@ -480,6 +562,48 @@ Mods: {
 						  {$UI.HappinessWords.Like}    +
 						  {$UI.HappinessWords.Dislike} -
 						  {$UI.HappinessWords.Hate}    ÷
+						'''
+				}
+
+				Statues: {
+					Label: Statues
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be math symbols.
+						  {$UI.HappinessWords.Love}    [i:HeartStatue]
+						  {$UI.HappinessWords.Like}    [i:StarStatue]
+						  {$UI.HappinessWords.Dislike} [i:ImpStatue]
+						  {$UI.HappinessWords.Hate}    [i:GloomStatue]
+						'''
+				}
+
+				HeartsAndSkulls: {
+					Label: Hearts And Skulls
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be math symbols.
+						  {$UI.HappinessWords.Love}    [i:Heart]
+						  {$UI.HappinessWords.Like}    [i:Star]
+						  {$UI.HappinessWords.Dislike} [i:LivingFireBlock]
+						  {$UI.HappinessWords.Hate}    [i:Skull]
+						'''
+				}
+
+				Paintings: {
+					Label: Paintings
+					Tooltip:
+						'''
+						{$Label}
+
+						The labels for the categories will be math symbols.
+						  {$UI.HappinessWords.Love}    [i:1482]
+						  {$UI.HappinessWords.Like}    [i:5248]
+						  {$UI.HappinessWords.Dislike} [i:4723]
+						  {$UI.HappinessWords.Hate}    [i:1475]
 						'''
 				}
 			}

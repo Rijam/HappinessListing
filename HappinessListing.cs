@@ -28,6 +28,7 @@ namespace HappinessListing
 
 			BestiaryEntryModifications.NPCBlackList = null;
 			LineEntryModifications.NPCBlackList = null;
+			RegularDialogueModifications.NPCBlackList = null;
 		}
 
 		public override object Call(params object[] args)
@@ -65,10 +66,10 @@ namespace HappinessListing
 				// Config value for "Color Code Dialogue"
 				case "ColorCodeText":
 				case "ColorCodeDialogue":
-					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeText; // Enum
+					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeHappinessText; // Enum
 				case "ColorCodeTextToString":
 				case "ColorCodeDialogueToString":
-					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeText.ToString(); // String
+					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeHappinessText.ToString(); // String
 
 				// Config value for "Princess Dialogue Maximum"
 				case "MaxNumberOfPeoplePrincessCanTalkAboutAtOnce":
@@ -96,6 +97,14 @@ namespace HappinessListing
 				case "LineEntryModificationsBlackListNPC":
 					LineEntryModifications.NPCBlackList.Add(((NPC)args[1]).type);
 					return LineEntryModifications.NPCBlackList.Contains(((NPC)args[1]).type); // Bool: True if it was added successfully.
+
+				// Add your NPC to the a blacklist so its regular dialogue won't get modified.
+				case "RegularDialogueModificationsBlackListType":
+					RegularDialogueModifications.NPCBlackList.Add((int)args[1]);
+					return RegularDialogueModifications.NPCBlackList.Contains((int)args[1]); // Bool: True if it was added successfully.
+				case "RegularDialogueModificationsBlackListNPC":
+					RegularDialogueModifications.NPCBlackList.Add(((NPC)args[1]).type);
+					return RegularDialogueModifications.NPCBlackList.Contains(((NPC)args[1]).type); // Bool: True if it was added successfully.
 
 				// Add your NPC to the a blacklist so it won't receive the info box with happiness information.
 				case "BestiaryFlavorTextEntryBlackListType":

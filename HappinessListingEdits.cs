@@ -18,6 +18,7 @@ namespace HappinessListing
 		public override void Load()
 		{
 			Terraria.GameContent.On_ShopHelper.AddHappinessReportText += On_ShopHelper_AddHappinessReportText;
+			Terraria.On_NPC.GetChat += On_NPC_GetChat;
 #if TML145
 			MethodInfo method_AddHappinessReportText = typeof(ShopHelper).GetMethod("AddHappinessReportText", BindingFlags.Instance | BindingFlags.NonPublic);
 			MethodInfo method_AddHappinessReportTextWithKey = typeof(ShopHelper).GetMethod("AddHappinessReportTextWithKey", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -334,7 +335,7 @@ namespace HappinessListing
 
 			return (string)Field__currentHappiness.GetValue(Main.ShopHelper);
 		}
-		
+
 		private static readonly FieldInfo Field__currentNPCBeingTalkedTo = typeof(Terraria.GameContent.ShopHelper).GetField("_currentNPCBeingTalkedTo", BindingFlags.NonPublic | BindingFlags.Instance);
 
 		/// <summary> Gets ShopHelper._currentNPCBeingTalkedTo </summary>
@@ -405,5 +406,16 @@ namespace HappinessListing
 		}
 
 #endif
+
+		/// <summary>
+		/// Detours the method that gets the regular dialogue chat message.
+		/// </summary>
+		private string On_NPC_GetChat(On_NPC.orig_GetChat orig, NPC self)
+		{
+			string regularDialogue = RegularDialogueModifications.ApplyPreEntryModificationsForRegularDialogue();
+			regularDialogue += orig(self); // Run the original code
+			RegularDialogueModifications.ApplyPostEntryModificationsForRegularDialogue(ref regularDialogue);
+			return regularDialogue;
+		}
 	}
 }
