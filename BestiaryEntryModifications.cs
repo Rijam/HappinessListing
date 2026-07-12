@@ -219,6 +219,14 @@ namespace HappinessListing
 						$"[c/{Color.BurlyWood.Hex3()}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]",
 						$"[c/{Color.MediumVioletRed.Hex3()}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]");
 				}
+				if (config == HappinessListingConfig.BestiaryPreferencesEntry.TextVibrant)
+				{
+					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
+						$"[c/00FF00:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]",
+						$"[c/FFFF00:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]",
+						$"[c/FF7F00:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]",
+						$"[c/FF0000:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]");
+				}
 				if (config == HappinessListingConfig.BestiaryPreferencesEntry.Emoticons)
 				{
 					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
@@ -266,6 +274,30 @@ namespace HappinessListing
 						"+",
 						"-",
 						"÷");
+				}
+				if (config == HappinessListingConfig.BestiaryPreferencesEntry.Statues)
+				{
+					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
+						"[i:HeartStatue]",
+						"[i:StarStatue]",
+						"[i:ImpStatue]",
+						"[i:GloomStatue]");
+				}
+				if (config == HappinessListingConfig.BestiaryPreferencesEntry.HeartsAndSkulls)
+				{
+					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
+						"[i:Heart]",
+						"[i:Star]",
+						"[i:LivingFireBlock]",
+						"[i:Skull]");
+				}
+				if (config == HappinessListingConfig.BestiaryPreferencesEntry.Paintings)
+				{
+					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
+						"[i:1482]", // Good Morning
+						"[i:5248]", // Happy Little Tree
+						"[i:4723]", // Nevermore
+						"[i:1475]"); // Darkness
 				}
 				return stringBuilder.ToString(); // Return the completed string.
 			}

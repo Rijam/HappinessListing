@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
@@ -20,6 +19,7 @@ namespace HappinessListing
 #if TML144
 			Terraria.GameContent.On_ShopHelper.AddHappinessReportText += On_ShopHelper_AddHappinessReportText;
 #endif
+			Terraria.On_NPC.GetChat += On_NPC_GetChat;
 			MethodInfo method_AddHappinessReportText = typeof(ShopHelper).GetMethod("AddHappinessReportText", BindingFlags.Instance | BindingFlags.NonPublic);
 			MethodInfo method_AddHappinessReportTextWithKey = typeof(ShopHelper).GetMethod("AddHappinessReportTextWithKey", BindingFlags.Instance | BindingFlags.NonPublic);
 			MonoModHooks.Add(method_AddHappinessReportText, On_ShopHelper_AddHappinessReportText);
@@ -323,7 +323,7 @@ namespace HappinessListing
 				return ModContent.GetInstance<HappinessListingConfig>().MaxNumberOfPeoplePrincessCanTalkAboutAtOnce;
 			});
 		}
-			
+
 		private static readonly FieldInfo Field__currentHappiness = typeof(Terraria.GameContent.ShopHelper).GetField("_currentHappiness", BindingFlags.NonPublic | BindingFlags.Instance);
 
 		/// <summary> Gets or Sets ShopHelper._currentHappiness </summary>
@@ -336,7 +336,7 @@ namespace HappinessListing
 
 			return (string)Field__currentHappiness.GetValue(Main.ShopHelper);
 		}
-		
+
 		private static readonly FieldInfo Field__currentNPCBeingTalkedTo = typeof(Terraria.GameContent.ShopHelper).GetField("_currentNPCBeingTalkedTo", BindingFlags.NonPublic | BindingFlags.Instance);
 
 		/// <summary> Gets ShopHelper._currentNPCBeingTalkedTo </summary>
@@ -354,7 +354,7 @@ namespace HappinessListing
 		}
 
 		private static readonly FieldInfo Field__handlers = typeof(Terraria.UI.Chat.ChatManager).GetField("_handlers", BindingFlags.NonPublic | BindingFlags.Static);
-		
+
 		/// <summary> Gets ChatManager._handlers </summary>
 		public static ConcurrentDictionary<string, ITagHandler> Get_ChatManager__handlers()
 		{
@@ -405,6 +405,17 @@ namespace HappinessListing
 				orig(self, textKey, textKeyInCategory, substitutes, otherNPCType); // Run the original code
 			}
 			LineEntryModifications.ApplyPostEntryModifications();
+		}
+
+		/// <summary>
+		/// Detours the method that gets the regular dialogue chat message.
+		/// </summary>
+		private string On_NPC_GetChat(On_NPC.orig_GetChat orig, NPC self)
+		{
+			string regularDialogue = RegularDialogueModifications.ApplyPreEntryModificationsForRegularDialogue();
+			regularDialogue += orig(self); // Run the original code
+			RegularDialogueModifications.ApplyPostEntryModificationsForRegularDialogue(ref regularDialogue);
+			return regularDialogue;
 		}
 	}
 }

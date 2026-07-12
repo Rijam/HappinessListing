@@ -32,6 +32,7 @@ namespace HappinessListing
 
 			BestiaryEntryModifications.NPCBlackList = null;
 			LineEntryModifications.NPCBlackList = null;
+			RegularDialogueModifications.NPCBlackList = null;
 		}
 
 		public override object Call(params object[] args)
@@ -69,10 +70,10 @@ namespace HappinessListing
 				// Config value for "Color Code Dialogue"
 				case "ColorCodeText":
 				case "ColorCodeDialogue":
-					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeText; // Enum
+					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeHappinessText; // Enum
 				case "ColorCodeTextToString":
 				case "ColorCodeDialogueToString":
-					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeText.ToString(); // String
+					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeHappinessText.ToString(); // String
 
 				// Config value for "Princess Dialogue Maximum"
 				case "MaxNumberOfPeoplePrincessCanTalkAboutAtOnce":

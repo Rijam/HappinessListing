@@ -43,7 +43,7 @@ namespace HappinessListing
 				return;
 			}
 			HappinessListingConfig config = ModContent.GetInstance<HappinessListingConfig>();
-			if (config.ColorCodeText != HappinessListingConfig.ColorCoding.None)
+			if (config.ColorCodeHappinessText != HappinessListingConfig.ColorCoding.None)
 			{
 				string currentHappiness = HappinessListingEdits.GetSet_ShopHelper__currentHappiness();
 				ColorEnd(ref currentHappiness);
@@ -67,7 +67,7 @@ namespace HappinessListing
 		/// </summary>
 		private static void AddIconBeforeEntry(ref string currentHappiness, HappinessListingConfig config, string textKeyInCategory)
 		{
-			if (config.EntryIconType == HappinessListingConfig.IconType.None && config.ColorCodeText == HappinessListingConfig.ColorCoding.None)
+			if (config.EntryIconType == HappinessListingConfig.IconType.None && config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.None)
 			{
 				return;
 			}
@@ -97,7 +97,7 @@ namespace HappinessListing
 			{
 				IconBasedOnAffection(ref currentHappiness, config.EntryIconType, affectionLevel);
 			}
-			if (config.ColorCodeText != HappinessListingConfig.ColorCoding.None)
+			if (config.ColorCodeHappinessText != HappinessListingConfig.ColorCoding.None)
 			{
 				ColorStart(ref currentHappiness, config, affectionLevel);
 			}
@@ -175,6 +175,39 @@ namespace HappinessListing
 					_ => "?",
 				};
 			}
+			else if (iconType == HappinessListingConfig.IconType.Statues)
+			{
+				affectionIcon = affectionLevel switch
+				{
+					AffectionLevel.Love => "[i:HeartStatue]",
+					AffectionLevel.Like => "[i:StarStatue]",
+					AffectionLevel.Dislike => "[i:ImpStatue]",
+					AffectionLevel.Hate => "[i:GloomStatue]",
+					_ => "?",
+				};
+			}
+			else if (iconType == HappinessListingConfig.IconType.HeartsAndSkulls)
+			{
+				affectionIcon = affectionLevel switch
+				{
+					AffectionLevel.Love => "[i:Heart]",
+					AffectionLevel.Like => "[i:Star]",
+					AffectionLevel.Dislike => "[i:LivingFireBlock]",
+					AffectionLevel.Hate => "[i:Skull]",
+					_ => "?",
+				};
+			}
+			else if (iconType == HappinessListingConfig.IconType.Paintings)
+			{
+				affectionIcon = affectionLevel switch
+				{
+					AffectionLevel.Love => "[i:1482]", // Good Morning
+					AffectionLevel.Like => "[i:5248]", // Happy Little Tree
+					AffectionLevel.Dislike => "[i:4723]", // Nevermore
+					AffectionLevel.Hate => "[i:1475]", // Darkness
+					_ => "?",
+				};
+			}
 			currentHappiness += $"{affectionIcon} ";
 		}
 
@@ -225,7 +258,7 @@ namespace HappinessListing
 		private static void ColorStart(ref string currentHappiness, HappinessListingConfig config, AffectionLevel affectionLevel)
 		{
 			string colorCode = "";
-			if (config.ColorCodeText == HappinessListingConfig.ColorCoding.HappinessGYOR)
+			if (config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.HappinessGYOR)
 			{
 				colorCode = affectionLevel switch
 				{
@@ -236,7 +269,7 @@ namespace HappinessListing
 					_ => "?",
 				};
 			}
-			else if (config.ColorCodeText == HappinessListingConfig.ColorCoding.HappinessYGBP)
+			else if (config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.HappinessYGBP)
 			{
 				colorCode = affectionLevel switch
 				{
@@ -247,7 +280,7 @@ namespace HappinessListing
 					_ => "?",
 				};
 			}
-			else if (config.ColorCodeText == HappinessListingConfig.ColorCoding.HappinessGrayscale)
+			else if (config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.HappinessGrayscale)
 			{
 				colorCode = affectionLevel switch
 				{
@@ -258,7 +291,7 @@ namespace HappinessListing
 					_ => "?",
 				};
 			}
-			else if (config.ColorCodeText == HappinessListingConfig.ColorCoding.HappinessDialogPanelRework)
+			else if (config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.HappinessDialogPanelRework)
 			{
 				colorCode = affectionLevel switch
 				{
@@ -269,13 +302,24 @@ namespace HappinessListing
 					_ => "?",
 				};
 			}
+			else if (config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.HappinessVibrant)
+			{
+				colorCode = affectionLevel switch
+				{
+					AffectionLevel.Love => "[c/00FF00:",
+					AffectionLevel.Like => "[c/FFFF00:",
+					AffectionLevel.Dislike => "[c/FF7F00:",
+					AffectionLevel.Hate => "[c/FF0000:",
+					_ => "?",
+				};
+			}
 			currentHappiness += colorCode;
 		}
 
 		/// <summary>
 		/// Adds a closing bracket to end the color code.
 		/// </summary>
-		private static void ColorEnd(ref string currentHappiness)
+		internal static void ColorEnd(ref string currentHappiness)
 		{
 			currentHappiness += "]";
 		}
