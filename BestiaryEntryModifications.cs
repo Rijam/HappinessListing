@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
@@ -187,118 +186,104 @@ namespace HappinessListing
 			{
 				HappinessListingConfig.BestiaryPreferencesEntry config = ModContent.GetInstance<HappinessListingConfig>().BestiaryFlavorTextEntry;
 				StringBuilder stringBuilder = new();
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.TextGYOR)
+
+				string lovePrefix = "";
+				string likePrefix = "";
+				string dislikePrefix = "";
+				string hatePrefix = "";
+
+				switch (config)
 				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						$"[c/b3f2b3:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]", 
-						$"[c/ddf2b3:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]", 
-						$"[c/f2e0b3:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]", 
-						$"[c/f2b5b3:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]");
+					case HappinessListingConfig.BestiaryPreferencesEntry.TextGYOR:
+						lovePrefix = $"[c/{CommonColors.WikiColors.Love.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]";
+						likePrefix = $"[c/{CommonColors.WikiColors.Like.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]";
+						dislikePrefix = $"[c/{CommonColors.WikiColors.Dislike.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]";
+						hatePrefix = $"[c/{CommonColors.WikiColors.Hate.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]";
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.TextYGBP:
+						lovePrefix = $"[c/{CommonColors.InGameColors.Love.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]";
+						likePrefix = $"[c/{CommonColors.InGameColors.Like.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]";
+						dislikePrefix = $"[c/{CommonColors.InGameColors.Dislike.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]";
+						hatePrefix = $"[c/{CommonColors.InGameColors.Hate.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]";
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.TextGrayscale:
+						lovePrefix = $"[c/{CommonColors.Grayscale.Love.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]";
+						likePrefix = $"[c/{CommonColors.Grayscale.Like.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]";
+						dislikePrefix = $"[c/{CommonColors.Grayscale.Dislike.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]";
+						hatePrefix = $"[c/{CommonColors.Grayscale.Hate.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]";
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.TextDialogPanelRework:
+						lovePrefix = $"[c/{CommonColors.ReworkColors.Love.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]";
+						likePrefix = $"[c/{CommonColors.ReworkColors.Like.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]";
+						dislikePrefix = $"[c/{CommonColors.ReworkColors.Dislike.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]";
+						hatePrefix = $"[c/{CommonColors.ReworkColors.Hate.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]";
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.TextVibrant:
+						lovePrefix = $"[c/{CommonColors.Vibrant.Love.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]";
+						likePrefix = $"[c/{CommonColors.Vibrant.Like.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]";
+						dislikePrefix = $"[c/{CommonColors.Vibrant.Dislike.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]";
+						hatePrefix = $"[c/{CommonColors.Vibrant.Hate.HexString}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]";
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.Emoticons:
+						lovePrefix = CommonIcons.Emoticons.Love;
+						likePrefix = CommonIcons.Emoticons.Like;
+						dislikePrefix = CommonIcons.Emoticons.Dislike;
+						hatePrefix = CommonIcons.Emoticons.Hate;
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.ChecksAndXs:
+						lovePrefix = CommonIcons.ChecksAndXs.Love;
+						likePrefix = CommonIcons.ChecksAndXs.Like;
+						dislikePrefix = CommonIcons.ChecksAndXs.Dislike;
+						hatePrefix = CommonIcons.ChecksAndXs.Hate;
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.HappinessIcon:
+						lovePrefix = CommonIcons.HappinessIcon.Love;
+						likePrefix = CommonIcons.HappinessIcon.Like;
+						dislikePrefix = CommonIcons.HappinessIcon.Dislike;
+						hatePrefix = CommonIcons.HappinessIcon.Hate;
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.Potions:
+						lovePrefix = CommonIcons.Potions.Love;
+						likePrefix = CommonIcons.Potions.Like;
+						dislikePrefix = CommonIcons.Potions.Dislike;
+						hatePrefix = CommonIcons.Potions.Hate;
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.Pickaxes:
+						lovePrefix = CommonIcons.Pickaxes.Love;
+						likePrefix = CommonIcons.Pickaxes.Like;
+						dislikePrefix = CommonIcons.Pickaxes.Dislike;
+						hatePrefix = CommonIcons.Pickaxes.Hate;
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.MathSymbols:
+						lovePrefix = CommonIcons.MathSymbols.Love;
+						likePrefix = CommonIcons.MathSymbols.Like;
+						dislikePrefix = CommonIcons.MathSymbols.Dislike;
+						hatePrefix = CommonIcons.MathSymbols.Hate;
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.Statues:
+						lovePrefix = CommonIcons.Statues.Love;
+						likePrefix = CommonIcons.Statues.Like;
+						dislikePrefix = CommonIcons.Statues.Dislike;
+						hatePrefix = CommonIcons.Statues.Hate;
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.HeartsAndSkulls:
+						lovePrefix = CommonIcons.HeartsAndSkulls.Love;
+						likePrefix = CommonIcons.HeartsAndSkulls.Like;
+						dislikePrefix = CommonIcons.HeartsAndSkulls.Dislike;
+						hatePrefix = CommonIcons.HeartsAndSkulls.Hate;
+						break;
+					case HappinessListingConfig.BestiaryPreferencesEntry.Paintings:
+						lovePrefix = CommonIcons.Paintings.Love;
+						likePrefix = CommonIcons.Paintings.Like;
+						dislikePrefix = CommonIcons.Paintings.Dislike;
+						hatePrefix = CommonIcons.Paintings.Hate;
+						break;
+					default:
+						break;
 				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.TextYGBP)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						$"[c/f2d45a:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]",
-						$"[c/9de997:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]",
-						$"[c/97dbe4:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]",
-						$"[c/bbb2e3:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.TextGrayscale)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						$"[c/ffffff:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]",
-						$"[c/dddddd:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]",
-						$"[c/bbbbbb:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]",
-						$"[c/999999:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.TextDialogPanelRework)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						$"[c/{Color.LawnGreen.Hex3()}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]",
-						$"[c/{Color.CornflowerBlue.Hex3()}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]",
-						$"[c/{Color.BurlyWood.Hex3()}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]",
-						$"[c/{Color.MediumVioletRed.Hex3()}:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.TextVibrant)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						$"[c/00FF00:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Love")}]",
-						$"[c/FFFF00:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Like")}]",
-						$"[c/FF7F00:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Dislike")}]",
-						$"[c/FF0000:{Language.GetTextValue("Mods.HappinessListing.UI.HappinessWords.Hate")}]");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.Emoticons)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						":D",
-						":)",
-						":(",
-						":'(");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.ChecksAndXs)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						"✔",
-						"✓",
-						"✗",
-						"✘");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.HappinessIcon)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						HappinessIconChatTag.Love,
-						HappinessIconChatTag.Like,
-						HappinessIconChatTag.Dislike,
-						HappinessIconChatTag.Hate);
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.Potions)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						"[i:2352]",
-						"[i:293]",
-						"[i:2353]",
-						"[i:678]");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.Pickaxes)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						"[i:2786]",
-						"[i:990]",
-						"[i:103]",
-						"[i:3509]");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.MathSymbols)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						"×",
-						"+",
-						"-",
-						"÷");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.Statues)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						"[i:HeartStatue]",
-						"[i:StarStatue]",
-						"[i:ImpStatue]",
-						"[i:GloomStatue]");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.HeartsAndSkulls)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						"[i:Heart]",
-						"[i:Star]",
-						"[i:LivingFireBlock]",
-						"[i:Skull]");
-				}
-				if (config == HappinessListingConfig.BestiaryPreferencesEntry.Paintings)
-				{
-					FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList,
-						"[i:1482]", // Good Morning
-						"[i:5248]", // Happy Little Tree
-						"[i:4723]", // Nevermore
-						"[i:1475]"); // Darkness
-				}
+
+				FormatAllAffectionLevels(npc, ref stringBuilder, loveList, likeList, dislikeList, hateList, lovePrefix, likePrefix, dislikePrefix, hatePrefix);
+
 				return stringBuilder.ToString(); // Return the completed string.
 			}
 			else

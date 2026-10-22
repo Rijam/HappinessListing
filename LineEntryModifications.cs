@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.Personalities;
@@ -72,26 +71,27 @@ namespace HappinessListing
 				return;
 			}
 
-			if (config.EntryIconType == HappinessListingConfig.IconType.Asterick)
+			switch (config.EntryIconType)
 			{
-				currentHappiness += "* ";
+				case HappinessListingConfig.IconType.Asterick:
+					currentHappiness += $"{CommonIcons.Asterick} ";
+					break;
+				case HappinessListingConfig.IconType.Bullet:
+					currentHappiness += $"{CommonIcons.Bullet} ";
+					break;
+				case HappinessListingConfig.IconType.RightArrow:
+					currentHappiness += $"{CommonIcons.RightArrow} ";
+					break;
+				case HappinessListingConfig.IconType.GreaterThan:
+					currentHappiness += $"{CommonIcons.GreaterThan} ";
+					break;
+				case HappinessListingConfig.IconType.Tilde:
+					currentHappiness += $"{CommonIcons.Tilde} ";
+					break;
+				default:
+					break;
 			}
-			else if (config.EntryIconType == HappinessListingConfig.IconType.Bullet)
-			{
-				currentHappiness += "• ";
-			}
-			else if (config.EntryIconType == HappinessListingConfig.IconType.RightArrow)
-			{
-				currentHappiness += "→ ";
-			}
-			else if (config.EntryIconType == HappinessListingConfig.IconType.GreaterThan)
-			{
-				currentHappiness += "> ";
-			}
-			else if (config.EntryIconType == HappinessListingConfig.IconType.Tilde)
-			{
-				currentHappiness += "~ ";
-			}
+
 			AffectionLevel affectionLevel = DetermineAffectionType(textKeyInCategory);
 			if (config.EntryIconType != HappinessListingConfig.IconType.None)
 			{
@@ -109,105 +109,103 @@ namespace HappinessListing
 		private static void IconBasedOnAffection(ref string currentHappiness, HappinessListingConfig.IconType iconType, AffectionLevel affectionLevel)
 		{
 			string affectionIcon = "";
-			if (iconType == HappinessListingConfig.IconType.Emoticons)
+
+			switch (iconType)
 			{
-				affectionIcon = affectionLevel switch
-				{
-					AffectionLevel.Love => ":D",
-					AffectionLevel.Like => ":)",
-					AffectionLevel.Dislike => ":(",
-					AffectionLevel.Hate => ":'(",
-					_ => "?",
-				};
+				case HappinessListingConfig.IconType.Emoticons:
+					affectionIcon = affectionLevel switch
+					{
+						AffectionLevel.Love => CommonIcons.Emoticons.Love,
+						AffectionLevel.Like => CommonIcons.Emoticons.Like,
+						AffectionLevel.Dislike => CommonIcons.Emoticons.Dislike,
+						AffectionLevel.Hate => CommonIcons.Emoticons.Hate,
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.IconType.ChecksAndXs:
+					affectionIcon = affectionLevel switch
+					{
+						AffectionLevel.Love => CommonIcons.ChecksAndXs.Love,
+						AffectionLevel.Like => CommonIcons.ChecksAndXs.Like,
+						AffectionLevel.Dislike => CommonIcons.ChecksAndXs.Dislike,
+						AffectionLevel.Hate => CommonIcons.ChecksAndXs.Hate,
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.IconType.HappinessIcon:
+					affectionIcon = affectionLevel switch
+					{
+						AffectionLevel.Love => CommonIcons.HappinessIcon.Love,
+						AffectionLevel.Like => CommonIcons.HappinessIcon.Like,
+						AffectionLevel.Dislike => CommonIcons.HappinessIcon.Dislike,
+						AffectionLevel.Hate => CommonIcons.HappinessIcon.Hate,
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.IconType.Potions:
+					affectionIcon = affectionLevel switch
+					{
+						AffectionLevel.Love => CommonIcons.Potions.Love,
+						AffectionLevel.Like => CommonIcons.Potions.Like,
+						AffectionLevel.Dislike => CommonIcons.Potions.Dislike,
+						AffectionLevel.Hate => CommonIcons.Potions.Hate,
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.IconType.Pickaxes:
+					affectionIcon = affectionLevel switch
+					{
+						AffectionLevel.Love => CommonIcons.Pickaxes.Love,
+						AffectionLevel.Like => CommonIcons.Pickaxes.Like,
+						AffectionLevel.Dislike => CommonIcons.Pickaxes.Dislike,
+						AffectionLevel.Hate => CommonIcons.Pickaxes.Hate,
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.IconType.MathSymbols:
+					affectionIcon = affectionLevel switch
+					{
+						AffectionLevel.Love => CommonIcons.MathSymbols.Love,
+						AffectionLevel.Like => CommonIcons.MathSymbols.Like,
+						AffectionLevel.Dislike => CommonIcons.MathSymbols.Dislike,
+						AffectionLevel.Hate => CommonIcons.MathSymbols.Hate,
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.IconType.Statues:
+					affectionIcon = affectionLevel switch
+					{
+						AffectionLevel.Love => CommonIcons.Statues.Love,
+						AffectionLevel.Like => CommonIcons.Statues.Like,
+						AffectionLevel.Dislike => CommonIcons.Statues.Dislike,
+						AffectionLevel.Hate => CommonIcons.Statues.Hate,
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.IconType.HeartsAndSkulls:
+					affectionIcon = affectionLevel switch
+					{
+						AffectionLevel.Love => CommonIcons.HeartsAndSkulls.Love,
+						AffectionLevel.Like => CommonIcons.HeartsAndSkulls.Like,
+						AffectionLevel.Dislike => CommonIcons.HeartsAndSkulls.Dislike,
+						AffectionLevel.Hate => CommonIcons.HeartsAndSkulls.Hate,
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.IconType.Paintings:
+					affectionIcon = affectionLevel switch
+					{
+						AffectionLevel.Love => CommonIcons.Paintings.Love,
+						AffectionLevel.Like => CommonIcons.Paintings.Like,
+						AffectionLevel.Dislike => CommonIcons.Paintings.Dislike,
+						AffectionLevel.Hate => CommonIcons.Paintings.Hate,
+						_ => "?",
+					};
+					break;
+				default:
+					break;
 			}
-			else if (iconType == HappinessListingConfig.IconType.ChecksAndXs)
-			{
-				affectionIcon = affectionLevel switch
-				{
-					AffectionLevel.Love => "✔",
-					AffectionLevel.Like => "✓",
-					AffectionLevel.Dislike => "✗",
-					AffectionLevel.Hate => "✘",
-					_ => "?",
-				};
-			}
-			else if (iconType == HappinessListingConfig.IconType.HappinessIcon)
-			{
-				affectionIcon = affectionLevel switch
-				{
-					AffectionLevel.Love => HappinessIconChatTag.Love,
-					AffectionLevel.Like => HappinessIconChatTag.Like,
-					AffectionLevel.Dislike => HappinessIconChatTag.Dislike,
-					AffectionLevel.Hate => HappinessIconChatTag.Hate,
-					_ => "?",
-				};
-			}
-			else if (iconType == HappinessListingConfig.IconType.Potions)
-			{
-				affectionIcon = affectionLevel switch
-				{
-					AffectionLevel.Love => "[i:2352]", // Love Potion
-					AffectionLevel.Like => "[i:293]", // Mana Regen Potion
-					AffectionLevel.Dislike => "[i:2353]", // Stink Potion
-					AffectionLevel.Hate => "[i:678]", // Red Potion
-					_ => "?",
-				};
-			}
-			else if (iconType == HappinessListingConfig.IconType.Pickaxes)
-			{
-				affectionIcon = affectionLevel switch
-				{
-					AffectionLevel.Love => "[i:2786]", // Solar Flare Pickaxe
-					AffectionLevel.Like => "[i:990]", // Pickaxe Axe
-					AffectionLevel.Dislike => "[i:103]", // Nightmare Pickaxe
-					AffectionLevel.Hate => "[i:3509]", // Copper Pickaxe
-					_ => "?",
-				};
-			}
-			else if (iconType == HappinessListingConfig.IconType.MathSymbols)
-			{
-				affectionIcon = affectionLevel switch
-				{
-					AffectionLevel.Love => "×",
-					AffectionLevel.Like => "+",
-					AffectionLevel.Dislike => "-",
-					AffectionLevel.Hate => "÷",
-					_ => "?",
-				};
-			}
-			else if (iconType == HappinessListingConfig.IconType.Statues)
-			{
-				affectionIcon = affectionLevel switch
-				{
-					AffectionLevel.Love => "[i:HeartStatue]",
-					AffectionLevel.Like => "[i:StarStatue]",
-					AffectionLevel.Dislike => "[i:ImpStatue]",
-					AffectionLevel.Hate => "[i:GloomStatue]",
-					_ => "?",
-				};
-			}
-			else if (iconType == HappinessListingConfig.IconType.HeartsAndSkulls)
-			{
-				affectionIcon = affectionLevel switch
-				{
-					AffectionLevel.Love => "[i:Heart]",
-					AffectionLevel.Like => "[i:Star]",
-					AffectionLevel.Dislike => "[i:LivingFireBlock]",
-					AffectionLevel.Hate => "[i:Skull]",
-					_ => "?",
-				};
-			}
-			else if (iconType == HappinessListingConfig.IconType.Paintings)
-			{
-				affectionIcon = affectionLevel switch
-				{
-					AffectionLevel.Love => "[i:1482]", // Good Morning
-					AffectionLevel.Like => "[i:5248]", // Happy Little Tree
-					AffectionLevel.Dislike => "[i:4723]", // Nevermore
-					AffectionLevel.Hate => "[i:1475]", // Darkness
-					_ => "?",
-				};
-			}
+
 			currentHappiness += $"{affectionIcon} ";
 		}
 
@@ -258,61 +256,63 @@ namespace HappinessListing
 		private static void ColorStart(ref string currentHappiness, HappinessListingConfig config, AffectionLevel affectionLevel)
 		{
 			string colorCode = "";
-			if (config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.HappinessGYOR)
+
+			switch (config.ColorCodeHappinessText)
 			{
-				colorCode = affectionLevel switch
-				{
-					AffectionLevel.Love => "[c/b3f2b3:",
-					AffectionLevel.Like => "[c/ddf2b3:",
-					AffectionLevel.Dislike => "[c/f2e0b3:",
-					AffectionLevel.Hate => "[c/f2b5b3:",
-					_ => "?",
-				};
+				case HappinessListingConfig.ColorCoding.HappinessGYOR:
+					colorCode = affectionLevel switch
+					{
+						AffectionLevel.Love => $"[c/{CommonColors.WikiColors.Love.HexString}:",
+						AffectionLevel.Like => $"[c/{CommonColors.WikiColors.Like.HexString}:",
+						AffectionLevel.Dislike => $"[c/{CommonColors.WikiColors.Dislike.HexString}:",
+						AffectionLevel.Hate => $"[c/{CommonColors.WikiColors.Hate.HexString}:",
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.ColorCoding.HappinessYGBP:
+					colorCode = affectionLevel switch
+					{
+						AffectionLevel.Love => $"[c/{CommonColors.InGameColors.Love.HexString}:",
+						AffectionLevel.Like => $"[c/{CommonColors.InGameColors.Like.HexString}:",
+						AffectionLevel.Dislike => $"[c/{CommonColors.InGameColors.Dislike.HexString}:",
+						AffectionLevel.Hate => $"[c/{CommonColors.InGameColors.Hate.HexString}:",
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.ColorCoding.HappinessGrayscale:
+					colorCode = affectionLevel switch
+					{
+						AffectionLevel.Love => $"[c/{CommonColors.Grayscale.Love.HexString}:",
+						AffectionLevel.Like => $"[c/{CommonColors.Grayscale.Like.HexString}:",
+						AffectionLevel.Dislike => $"[c/{CommonColors.Grayscale.Dislike.HexString}:",
+						AffectionLevel.Hate => $"[c/{CommonColors.Grayscale.Hate.HexString}:",
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.ColorCoding.HappinessDialogPanelRework:
+					colorCode = affectionLevel switch
+					{
+						AffectionLevel.Love => $"[c/{CommonColors.ReworkColors.Love.HexString}:",
+						AffectionLevel.Like => $"[c/{CommonColors.ReworkColors.Like.HexString}:",
+						AffectionLevel.Dislike => $"[c/{CommonColors.ReworkColors.Dislike.HexString}:",
+						AffectionLevel.Hate => $"[c/{CommonColors.ReworkColors.Hate.HexString}:",
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.ColorCoding.HappinessVibrant:
+					colorCode = affectionLevel switch
+					{
+						AffectionLevel.Love => $"[c/{CommonColors.Vibrant.Love.HexString}:",
+						AffectionLevel.Like => $"[c/{CommonColors.Vibrant.Like.HexString}:",
+						AffectionLevel.Dislike => $"[c/{CommonColors.Vibrant.Dislike.HexString}:",
+						AffectionLevel.Hate => $"[c/{CommonColors.Vibrant.Hate.HexString}:",
+						_ => "?",
+					};
+					break;
+				default:
+					break;
 			}
-			else if (config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.HappinessYGBP)
-			{
-				colorCode = affectionLevel switch
-				{
-					AffectionLevel.Love => "[c/f2d45a:",
-					AffectionLevel.Like => "[c/9de997:",
-					AffectionLevel.Dislike => "[c/97dbe4:",
-					AffectionLevel.Hate => "[c/bbb2e3:",
-					_ => "?",
-				};
-			}
-			else if (config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.HappinessGrayscale)
-			{
-				colorCode = affectionLevel switch
-				{
-					AffectionLevel.Love => "[c/ffffff:",
-					AffectionLevel.Like => "[c/dddddd:",
-					AffectionLevel.Dislike => "[c/bbbbbb:",
-					AffectionLevel.Hate => "[c/999999:",
-					_ => "?",
-				};
-			}
-			else if (config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.HappinessDialogPanelRework)
-			{
-				colorCode = affectionLevel switch
-				{
-					AffectionLevel.Love => $"[c/{Color.LawnGreen.Hex3()}:",
-					AffectionLevel.Like => $"[c/{Color.CornflowerBlue.Hex3()}:",
-					AffectionLevel.Dislike => $"[c/{Color.BurlyWood.Hex3()}:",
-					AffectionLevel.Hate => $"[c/{Color.MediumVioletRed.Hex3()}:",
-					_ => "?",
-				};
-			}
-			else if (config.ColorCodeHappinessText == HappinessListingConfig.ColorCoding.HappinessVibrant)
-			{
-				colorCode = affectionLevel switch
-				{
-					AffectionLevel.Love => "[c/00FF00:",
-					AffectionLevel.Like => "[c/FFFF00:",
-					AffectionLevel.Dislike => "[c/FF7F00:",
-					AffectionLevel.Hate => "[c/FF0000:",
-					_ => "?",
-				};
-			}
+
 			currentHappiness += colorCode;
 		}
 
@@ -432,6 +432,14 @@ namespace HappinessListing
 				return "HateLonely";
 			}
 			return textKeyInCategory;
+		}
+
+		/// <summary>
+		/// Method for getting the happiness dialogue max lines. Method so it can update "dynamically" in game.
+		/// </summary>
+		internal static int MaxLinesConfigValue()
+		{
+			return ModContent.GetInstance<HappinessListingConfig>().MaxTextLines;
 		}
 	}
 }

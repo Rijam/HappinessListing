@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using Newtonsoft.Json;
 using Terraria.ModLoader.Config;
 
 namespace HappinessListing
@@ -43,6 +42,18 @@ namespace HappinessListing
 		[DefaultValue(ColorCoding.None)]
 		public ColorCoding ColorCodeRegularDialogue { get; set; }
 
+		[Header("PortraitOptions")]
+
+		[DefaultValue(IconTypeHappinessOnly.HappinessIcon)]
+		public IconTypeHappinessOnly PortraitNameIconType { get; set; }
+
+		[DefaultValue(true)]
+		public bool PortraitHappinessPercentage { get; set; }
+
+		[DefaultValue(ColorCoding.HappinessYGBP)]
+		public ColorCoding ColorCodePortraitName { get; set; }
+
+
 		[Header("BestiaryOptions")]
 
 		[DefaultValue(BestiaryPreferencesEntry.HappinessIcon)]
@@ -68,10 +79,26 @@ namespace HappinessListing
 			Paintings
 		}
 
+		public enum IconTypeHappinessOnly
+		{
+			None,
+			Emoticons,
+			ChecksAndXs,
+			HappinessIcon,
+			Potions,
+			Pickaxes,
+			MathSymbols,
+			Statues,
+			HeartsAndSkulls,
+			Paintings
+		}
+
 		public enum ColorCoding
 		{
 			None,
+			/// <summary> In-game colors </summary>
 			HappinessYGBP,
+			/// <summary> Wiki colors </summary>
 			HappinessGYOR,
 			HappinessGrayscale,
 			HappinessDialogPanelRework,
@@ -81,7 +108,9 @@ namespace HappinessListing
 		public enum BestiaryPreferencesEntry
 		{
 			None,
+			/// <summary> In-game colors </summary>
 			TextYGBP,
+			/// <summary> Wiki colors </summary>
 			TextGYOR,
 			TextGrayscale,
 			TextDialogPanelRework,

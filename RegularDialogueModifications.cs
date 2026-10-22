@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.Personalities;
@@ -46,7 +45,7 @@ namespace HappinessListing
 			return "";
 		}
 
-		private static AffectionLevel DetermineAffectionFromPriceAdjustment()
+		internal static AffectionLevel DetermineAffectionFromPriceAdjustment()
 		{
 			double priceAdjustment = Main.LocalPlayer.currentShoppingSettings.PriceAdjustment;
 			if (priceAdjustment <= 0.82)
@@ -71,60 +70,61 @@ namespace HappinessListing
 		private static void ColorStart(ref string regularDialogue, HappinessListingConfig config, AffectionLevel affectionLevel)
 		{
 			string colorCode = "";
-			if (config.ColorCodeRegularDialogue == HappinessListingConfig.ColorCoding.HappinessGYOR)
+
+			switch (config.ColorCodeRegularDialogue)
 			{
-				colorCode = affectionLevel switch
-				{
-					AffectionLevel.Love => "[c/b3f2b3:",
-					AffectionLevel.Like => "[c/ddf2b3:",
-					AffectionLevel.Dislike => "[c/f2e0b3:",
-					AffectionLevel.Hate => "[c/f2b5b3:",
-					_ => "?",
-				};
-			}
-			else if (config.ColorCodeRegularDialogue == HappinessListingConfig.ColorCoding.HappinessYGBP)
-			{
-				colorCode = affectionLevel switch
-				{
-					AffectionLevel.Love => "[c/f2d45a:",
-					AffectionLevel.Like => "[c/9de997:",
-					AffectionLevel.Dislike => "[c/97dbe4:",
-					AffectionLevel.Hate => "[c/bbb2e3:",
-					_ => "?",
-				};
-			}
-			else if (config.ColorCodeRegularDialogue == HappinessListingConfig.ColorCoding.HappinessGrayscale)
-			{
-				colorCode = affectionLevel switch
-				{
-					AffectionLevel.Love => "[c/ffffff:",
-					AffectionLevel.Like => "[c/dddddd:",
-					AffectionLevel.Dislike => "[c/bbbbbb:",
-					AffectionLevel.Hate => "[c/999999:",
-					_ => "?",
-				};
-			}
-			else if (config.ColorCodeRegularDialogue == HappinessListingConfig.ColorCoding.HappinessDialogPanelRework)
-			{
-				colorCode = affectionLevel switch
-				{
-					AffectionLevel.Love => $"[c/{Color.LawnGreen.Hex3()}:",
-					AffectionLevel.Like => $"[c/{Color.CornflowerBlue.Hex3()}:",
-					AffectionLevel.Dislike => $"[c/{Color.BurlyWood.Hex3()}:",
-					AffectionLevel.Hate => $"[c/{Color.MediumVioletRed.Hex3()}:",
-					_ => "?",
-				};
-			}
-			else if (config.ColorCodeRegularDialogue == HappinessListingConfig.ColorCoding.HappinessVibrant)
-			{
-				colorCode = affectionLevel switch
-				{
-					AffectionLevel.Love => "[c/00FF00:",
-					AffectionLevel.Like => "[c/FFFF00:",
-					AffectionLevel.Dislike => "[c/FF7F00:",
-					AffectionLevel.Hate => "[c/FF0000:",
-					_ => "?",
-				};
+				case HappinessListingConfig.ColorCoding.HappinessGYOR:
+					colorCode = affectionLevel switch
+					{
+						AffectionLevel.Love => $"[c/{CommonColors.WikiColors.Love.HexString}:",
+						AffectionLevel.Like => $"[c/{CommonColors.WikiColors.Like.HexString}:",
+						AffectionLevel.Dislike => $"[c/{CommonColors.WikiColors.Dislike.HexString}:",
+						AffectionLevel.Hate => $"[c/{CommonColors.WikiColors.Hate.HexString}:",
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.ColorCoding.HappinessYGBP:
+					colorCode = affectionLevel switch
+					{
+						AffectionLevel.Love => $"[c/{CommonColors.InGameColors.Love.HexString}:",
+						AffectionLevel.Like => $"[c/{CommonColors.InGameColors.Like.HexString}:",
+						AffectionLevel.Dislike => $"[c/{CommonColors.InGameColors.Dislike.HexString}:",
+						AffectionLevel.Hate => $"[c/{CommonColors.InGameColors.Hate.HexString}:",
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.ColorCoding.HappinessGrayscale:
+					colorCode = affectionLevel switch
+					{
+						AffectionLevel.Love => $"[c/{CommonColors.Grayscale.Love.HexString}:",
+						AffectionLevel.Like => $"[c/{CommonColors.Grayscale.Like.HexString}:",
+						AffectionLevel.Dislike => $"[c/{CommonColors.Grayscale.Dislike.HexString}:",
+						AffectionLevel.Hate => $"[c/{CommonColors.Grayscale.Hate.HexString}:",
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.ColorCoding.HappinessDialogPanelRework:
+					colorCode = affectionLevel switch
+					{
+						AffectionLevel.Love => $"[c/{CommonColors.ReworkColors.Love.HexString}:",
+						AffectionLevel.Like => $"[c/{CommonColors.ReworkColors.Like.HexString}:",
+						AffectionLevel.Dislike => $"[c/{CommonColors.ReworkColors.Dislike.HexString}:",
+						AffectionLevel.Hate => $"[c/{CommonColors.ReworkColors.Hate.HexString}:",
+						_ => "?",
+					};
+					break;
+				case HappinessListingConfig.ColorCoding.HappinessVibrant:
+					colorCode = affectionLevel switch
+					{
+						AffectionLevel.Love => $"[c/{CommonColors.Vibrant.Love.HexString}:",
+						AffectionLevel.Like => $"[c/{CommonColors.Vibrant.Like.HexString}:",
+						AffectionLevel.Dislike => $"[c/{CommonColors.Vibrant.Dislike.HexString}:",
+						AffectionLevel.Hate => $"[c/{CommonColors.Vibrant.Hate.HexString}:",
+						_ => "?",
+					};
+					break;
+				default:
+					break;
 			}
 			regularDialogue += colorCode;
 		}

@@ -7,6 +7,7 @@ Mods: {
 				Headers: {
 					HappinessDialogueOptions: "[c/00FF00:Happiness Dialogue Options]"
 					RegularDialogueOptions: "[c/00FF00:Regular Dialogue Options]"
+					PortraitOptions: "[c/00FF00:Portrait Options]"
 					BestiaryOptions: "[c/00FF00:Bestiary Options]"
 				}
 
@@ -22,7 +23,7 @@ Mods: {
 				}
 
 				EntryIconType: {
-					Label: "[hlhi:love]  Entry Icon Type"
+					Label: "[hlhi:love] Entry Icon Type"
 					Tooltip:
 						'''
 						Each dialogue entry will be preceded with a character or icon.
@@ -114,6 +115,39 @@ Mods: {
 						'''
 				}
 
+				PortraitNameIconType: {
+					Label: "[hlhi:like] Portrait Happiness Icon Type"
+					Tooltip:
+						'''
+						Displays an icon under the Town NPC's portrait based their happiness.
+
+						Change to "None" for vanilla behavior.
+						Default by mod: "Happiness Icons"
+						'''
+				}
+
+				PortraitHappinessPercentage: {
+					Label: "[i:DiscountCard] Portrait Happiness Percentage"
+					Tooltip:
+						'''
+						Displays the Town NPC's price factor under their portrait and name.
+
+						Change to "Off" for vanilla behavior.
+						Default by mod: "On"
+						'''
+				}
+
+				ColorCodePortraitName: {
+					Label: "[i:LimePaint] Color Code Portrait Name"
+					Tooltip:
+						'''
+						Colors the name of the Town NPC under the portrait.
+
+						Change to "None" for vanilla behavior.
+						Default by mod: "In-game Colors"
+						'''
+				}
+
 				BestiaryFlavorTextEntry: {
 					Label: "[i:DontHurtNatureBook] Bestiary Happiness Info Box"
 					Tooltip:
@@ -129,6 +163,107 @@ Mods: {
 						Reload is required to re-initialize the Bestiary. Change this setting from the main menu.
 						'''
 				}
+			}
+
+			CommonTooltips: {
+				Emoticons:
+					'''
+					  {$UI.HappinessWords.Love}    :D
+					  {$UI.HappinessWords.Like}    :)
+					  {$UI.HappinessWords.Dislike} :(
+					  {$UI.HappinessWords.Hate}    :'(
+					'''
+				HappinessIcon:
+					'''
+					  {$UI.HappinessWords.Love}    [hlhi:love]
+					  {$UI.HappinessWords.Like}    [hlhi:like]
+					  {$UI.HappinessWords.Dislike} [hlhi:disl]
+					  {$UI.HappinessWords.Hate}    [hlhi:hate]
+					'''
+				ChecksAndXs:
+					'''
+					  {$UI.HappinessWords.Love}    ✔
+					  {$UI.HappinessWords.Like}    ✓
+					  {$UI.HappinessWords.Dislike} ✗
+					  {$UI.HappinessWords.Hate}    ✘
+					'''
+				Potions:
+					'''
+					  {$UI.HappinessWords.Love}    [i:2352]
+					  {$UI.HappinessWords.Like}    [i:293]
+					  {$UI.HappinessWords.Dislike} [i:2353]
+					  {$UI.HappinessWords.Hate}    [i:678]
+					'''
+				Pickaxes:
+					'''
+					  {$UI.HappinessWords.Love}    [i:2786]
+					  {$UI.HappinessWords.Like}    [i:990]
+					  {$UI.HappinessWords.Dislike} [i:103]
+					  {$UI.HappinessWords.Hate}    [i:3509]
+					'''
+				MathSymbols:
+					'''
+					  {$UI.HappinessWords.Love}    ×
+					  {$UI.HappinessWords.Like}    +
+					  {$UI.HappinessWords.Dislike} -
+					  {$UI.HappinessWords.Hate}    ÷
+					'''
+				Statues:
+					'''
+					  {$UI.HappinessWords.Love}    [i:HeartStatue]
+					  {$UI.HappinessWords.Like}    [i:StarStatue]
+					  {$UI.HappinessWords.Dislike} [i:ImpStatue]
+					  {$UI.HappinessWords.Hate}    [i:GloomStatue]
+					'''
+				HeartsAndSkulls:
+					'''
+					  {$UI.HappinessWords.Love}    [i:Heart]
+					  {$UI.HappinessWords.Like}    [i:Star]
+					  {$UI.HappinessWords.Dislike} [i:LivingFireBlock]
+					  {$UI.HappinessWords.Hate}    [i:Skull]
+					'''
+				Paintings:
+					'''
+					  {$UI.HappinessWords.Love}    [i:1482]
+					  {$UI.HappinessWords.Like}    [i:5248]
+					  {$UI.HappinessWords.Dislike} [i:4723]
+					  {$UI.HappinessWords.Hate}    [i:1475]
+					'''
+				HappinessYGBP:
+					'''
+					  [c/f2d45a:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+					  [c/9de997:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+					  [c/97dbe4:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+					  [c/bbb2e3:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+					'''
+				HappinessGYOR:
+					'''
+					  [c/b3f2b3:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+					  [c/ddf2b3:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+					  [c/f2e0b3:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+					  [c/f2b5b3:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+					'''
+				HappinessGrayscale:
+					'''
+					  [c/ffffff:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+					  [c/dddddd:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+					  [c/bbbbbb:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+					  [c/999999:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+					'''
+				HappinessDialogPanelRework:
+					'''
+					  [c/7CFC00:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+					  [c/6495ED:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+					  [c/DE8787:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+					  [c/C71585:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+					'''
+				HappinessVibrant:
+					'''
+					  [c/00FF00:{$Mods.HappinessListing.UI.HappinessWords.Love}]
+					  [c/FFFF00:{$Mods.HappinessListing.UI.HappinessWords.Like}]
+					  [c/FF7F00:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
+					  [c/FF0000:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+					'''
 			}
 
 			IconType: {
@@ -172,10 +307,7 @@ Mods: {
 						{$Label}
 
 						Dialogue entries will be preceded with emoticons that reflect the preference of the entry:
-						  {$UI.HappinessWords.Love}    :D
-						  {$UI.HappinessWords.Like}    :)
-						  {$UI.HappinessWords.Dislike} :(
-						  {$UI.HappinessWords.Hate}    :'(
+						{$CommonTooltips.Emoticons}
 						'''
 				}
 
@@ -186,10 +318,7 @@ Mods: {
 						{$Label}
 
 						Dialogue entries will be preceded with icons that reflect the preference of the entry:
-						  {$UI.HappinessWords.Love}    [hlhi:love]
-						  {$UI.HappinessWords.Like}    [hlhi:like]
-						  {$UI.HappinessWords.Dislike} [hlhi:disl]
-						  {$UI.HappinessWords.Hate}    [hlhi:hate]
+						{$CommonTooltips.HappinessIcon}
 						'''
 				}
 
@@ -230,10 +359,7 @@ Mods: {
 						{$Label}
 
 						Dialogue entries will be preceded with check marks and x's that reflect the preference of the entry:
-						  {$UI.HappinessWords.Love}    ✔
-						  {$UI.HappinessWords.Like}    ✓
-						  {$UI.HappinessWords.Dislike} ✗
-						  {$UI.HappinessWords.Hate}    ✘
+						{$CommonTooltips.ChecksAndXs}
 						'''
 				}
 
@@ -244,10 +370,7 @@ Mods: {
 						{$Label}
 
 						Dialogue entries will be preceded with potions that reflect the preference of the entry:
-						  {$UI.HappinessWords.Love}    [i:2352]
-						  {$UI.HappinessWords.Like}    [i:293]
-						  {$UI.HappinessWords.Dislike} [i:2353]
-						  {$UI.HappinessWords.Hate}    [i:678]
+						{$CommonTooltips.Potions}
 						'''
 				}
 
@@ -258,10 +381,7 @@ Mods: {
 						{$Label}
 
 						Dialogue entries will be preceded with pickaxes that reflect the preference of the entry:
-						  {$UI.HappinessWords.Love}    [i:2786]
-						  {$UI.HappinessWords.Like}    [i:990]
-						  {$UI.HappinessWords.Dislike} [i:103]
-						  {$UI.HappinessWords.Hate}    [i:3509]
+						{$CommonTooltips.Pickaxes}
 						'''
 				}
 
@@ -272,10 +392,7 @@ Mods: {
 						{$Label}
 
 						Dialogue entries will be preceded with symbols that reflect the preference of the entry:
-						  {$UI.HappinessWords.Love}    ×
-						  {$UI.HappinessWords.Like}    +
-						  {$UI.HappinessWords.Dislike} -
-						  {$UI.HappinessWords.Hate}    ÷
+						{$CommonTooltips.MathSymbols}
 						'''
 				}
 
@@ -285,11 +402,8 @@ Mods: {
 						'''
 						{$Label}
 
-						Dialogue entries will be preceded with symbols that reflect the preference of the entry:
-						  {$UI.HappinessWords.Love}    [i:HeartStatue]
-						  {$UI.HappinessWords.Like}    [i:StarStatue]
-						  {$UI.HappinessWords.Dislike} [i:ImpStatue]
-						  {$UI.HappinessWords.Hate}    [i:GloomStatue]
+						Dialogue entries will be preceded with statues that reflect the preference of the entry:
+						{$CommonTooltips.Statues}
 						'''
 				}
 
@@ -299,11 +413,8 @@ Mods: {
 						'''
 						{$Label}
 
-						Dialogue entries will be preceded with symbols that reflect the preference of the entry:
-						  {$UI.HappinessWords.Love}    [i:Heart]
-						  {$UI.HappinessWords.Like}    [i:Star]
-						  {$UI.HappinessWords.Dislike} [i:LivingFireBlock]
-						  {$UI.HappinessWords.Hate}    [i:Skull]
+						Dialogue entries will be preceded with items that reflect the preference of the entry:
+						{$CommonTooltips.HeartsAndSkulls}
 						'''
 				}
 
@@ -313,11 +424,122 @@ Mods: {
 						'''
 						{$Label}
 
-						Dialogue entries will be preceded with symbols that reflect the preference of the entry:
-						  {$UI.HappinessWords.Love}    [i:1482]
-						  {$UI.HappinessWords.Like}    [i:5248]
-						  {$UI.HappinessWords.Dislike} [i:4723]
-						  {$UI.HappinessWords.Hate}    [i:1475]
+						Dialogue entries will be preceded with paintings that reflect the preference of the entry:
+						{$CommonTooltips.Paintings}
+						'''
+				}
+			}
+
+			IconTypeHappinessOnly: {
+				Tooltip: ""
+
+				None: {
+					Label: "{$IconType.None.Label}"
+					Tooltip:
+						'''
+						{$Label}
+
+						No characters or icons will be displayed under the portrait.
+						Set to this for vanilla behavior or to turn this feature off.
+						'''
+				}
+
+				Emoticons: {
+					Label: "{$IconType.Emoticons.Label}"
+					Tooltip:
+						'''
+						{$Label}
+
+						Emoticons that reflect the happiness will be displayed under the portrait:
+						{$CommonTooltips.Emoticons}
+						'''
+				}
+
+				HappinessIcon: {
+					Label: "{$IconType.HappinessIcon.Label}"
+					Tooltip:
+						'''
+						{$Label}
+
+						Icons that reflect the happiness will be displayed under the portrait:
+						{$CommonTooltips.HappinessIcon}
+						'''
+				}
+
+				ChecksAndXs: {
+					Label: "{$IconType.ChecksAndXs.Label}"
+					Tooltip:
+						'''
+						{$Label}
+
+						Check marks and x's that reflect the happiness will be displayed under the portrait:
+						{$CommonTooltips.ChecksAndXs}
+						'''
+				}
+
+				Potions: {
+					Label: "{$IconType.Potions.Label}"
+					Tooltip:
+						'''
+						{$Label}
+
+						Potions that reflect the happiness will be displayed under the portrait:
+						{$CommonTooltips.Potions}
+						'''
+				}
+
+				Pickaxes: {
+					Label: "{$IconType.Pickaxes.Label}"
+					Tooltip:
+						'''
+						{$Label}
+
+						Pickaxes that reflect the happiness will be displayed under the portrait:
+						{$CommonTooltips.Pickaxes}
+						'''
+				}
+
+				MathSymbols: {
+					Label: "{$IconType.MathSymbols.Label}"
+					Tooltip:
+						'''
+						{$Label}
+
+						Symbols that reflect the happiness will be displayed under the portrait:
+						{$CommonTooltips.MathSymbols}
+						'''
+				}
+
+				Statues: {
+					Label: "{$IconType.Statues.Label}"
+					Tooltip:
+						'''
+						{$Label}
+
+						Statues that reflect the happiness will be displayed under the portrait:
+						{$CommonTooltips.Statues}
+						'''
+				}
+
+				HeartsAndSkulls: {
+					Label: "{$IconType.HeartsAndSkulls.Label}"
+					Tooltip:
+						'''
+						{$Label}
+
+						Items that reflect the happiness will be displayed under the portrait:
+						{$CommonTooltips.HeartsAndSkulls}
+						'''
+				}
+
+				Paintings: {
+					Label: "{$IconType.Paintings.Label}"
+					Tooltip:
+						'''
+						{$Label}
+
+						Paintings that reflect the happiness will be displayed under the portrait:
+						{$CommonTooltips.Paintings}
 						'''
 				}
 			}
@@ -343,10 +565,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be words with colors based on the Happiness Icons.
-						  [c/f2d45a:{$Mods.HappinessListing.UI.HappinessWords.Love}]
-						  [c/9de997:{$Mods.HappinessListing.UI.HappinessWords.Like}]
-						  [c/97dbe4:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
-						  [c/bbb2e3:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						{$CommonTooltips.HappinessYGBP}
 						'''
 				}
 
@@ -357,10 +576,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be words with colors based on the happiness infoboxes on the wiki.
-						  [c/b3f2b3:{$Mods.HappinessListing.UI.HappinessWords.Love}]
-						  [c/ddf2b3:{$Mods.HappinessListing.UI.HappinessWords.Like}]
-						  [c/f2e0b3:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
-						  [c/f2b5b3:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						{$CommonTooltips.HappinessGYOR}
 						'''
 				}
 
@@ -371,10 +587,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be words that get more gray.
-						  [c/ffffff:{$Mods.HappinessListing.UI.HappinessWords.Love}]
-						  [c/dddddd:{$Mods.HappinessListing.UI.HappinessWords.Like}]
-						  [c/bbbbbb:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
-						  [c/999999:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						{$CommonTooltips.HappinessGrayscale}
 						'''
 				}
 
@@ -385,10 +598,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be words that match the colors used in the Dialogue Panel Rework mod.
-						  [c/7CFC00:{$Mods.HappinessListing.UI.HappinessWords.Love}]
-						  [c/6495ED:{$Mods.HappinessListing.UI.HappinessWords.Like}]
-						  [c/DE8787:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
-						  [c/C71585:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						{$CommonTooltips.HappinessDialogPanelRework}
 						'''
 				}
 
@@ -399,10 +609,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be words that are vibrant green to red.
-						  [c/00FF00:{$Mods.HappinessListing.UI.HappinessWords.Love}]
-						  [c/FFFF00:{$Mods.HappinessListing.UI.HappinessWords.Like}]
-						  [c/FF7F00:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
-						  [c/FF0000:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						{$CommonTooltips.HappinessVibrant}
 						'''
 				}
 			}
@@ -428,10 +635,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be words with colors based on the Happiness Icons.
-						  [c/f2d45a:{$Mods.HappinessListing.UI.HappinessWords.Love}]:
-						  [c/9de997:{$Mods.HappinessListing.UI.HappinessWords.Like}]:
-						  [c/97dbe4:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]:
-						  [c/bbb2e3:{$Mods.HappinessListing.UI.HappinessWords.Hate}]:
+						{$CommonTooltips.HappinessYGBP}
 						'''
 				}
 
@@ -442,10 +646,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be words with colors based on the happiness infoboxes on the wiki.
-						  [c/b3f2b3:{$Mods.HappinessListing.UI.HappinessWords.Love}]:
-						  [c/ddf2b3:{$Mods.HappinessListing.UI.HappinessWords.Like}]:
-						  [c/f2e0b3:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]:
-						  [c/f2b5b3:{$Mods.HappinessListing.UI.HappinessWords.Hate}]:
+						{$CommonTooltips.HappinessGYOR}
 						'''
 				}
 
@@ -456,10 +657,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be words that get more gray.
-						  [c/ffffff:{$Mods.HappinessListing.UI.HappinessWords.Love}]:
-						  [c/dddddd:{$Mods.HappinessListing.UI.HappinessWords.Like}]:
-						  [c/bbbbbb:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]:
-						  [c/999999:{$Mods.HappinessListing.UI.HappinessWords.Hate}]:
+						{$CommonTooltips.HappinessGrayscale}
 						'''
 				}
 
@@ -470,10 +668,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be words that match the colors used in the Dialogue Panel Rework mod.
-						  [c/7CFC00:{$Mods.HappinessListing.UI.HappinessWords.Love}]:
-						  [c/6495ED:{$Mods.HappinessListing.UI.HappinessWords.Like}]:
-						  [c/DE8787:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]:
-						  [c/C71585:{$Mods.HappinessListing.UI.HappinessWords.Hate}]:
+						{$CommonTooltips.HappinessDialogPanelRework}
 						'''
 				}
 
@@ -484,10 +679,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be words that are vibrant green to red.
-						  [c/00FF00:{$Mods.HappinessListing.UI.HappinessWords.Love}]
-						  [c/FFFF00:{$Mods.HappinessListing.UI.HappinessWords.Like}]
-						  [c/FF7F00:{$Mods.HappinessListing.UI.HappinessWords.Dislike}]
-						  [c/FF0000:{$Mods.HappinessListing.UI.HappinessWords.Hate}]
+						{$CommonTooltips.HappinessVibrant}
 						'''
 				}
 
@@ -498,10 +690,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be emoticons.
-						  {$UI.HappinessWords.Love}    :D
-						  {$UI.HappinessWords.Like}    :)
-						  {$UI.HappinessWords.Dislike} :(
-						  {$UI.HappinessWords.Hate}    :'(
+						{$CommonTooltips.Emoticons}
 						'''
 				}
 
@@ -512,10 +701,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be check marks and x's.
-						  {$UI.HappinessWords.Love}    ✔
-						  {$UI.HappinessWords.Like}    ✓
-						  {$UI.HappinessWords.Dislike} ✗
-						  Hate    ✘
+						{$CommonTooltips.ChecksAndXs}
 						'''
 				}
 
@@ -526,10 +712,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be Happiness Icons.
-						  {$UI.HappinessWords.Love}    [hlhi:love]
-						  {$UI.HappinessWords.Like}    [hlhi:like]
-						  {$UI.HappinessWords.Dislike} [hlhi:disl]
-						  {$UI.HappinessWords.Hate}    [hlhi:hate]
+						{$CommonTooltips.HappinessIcon}
 						'''
 				}
 
@@ -540,10 +723,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be potions.
-						  {$UI.HappinessWords.Love}    [i:2352]
-						  {$UI.HappinessWords.Like}    [i:293]
-						  {$UI.HappinessWords.Dislike} [i:2353]
-						  {$UI.HappinessWords.Hate}    [i:678]
+						{$CommonTooltips.Potions}
 						'''
 				}
 
@@ -554,10 +734,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be pickaxes.
-						  {$UI.HappinessWords.Love}    [i:2786]
-						  {$UI.HappinessWords.Like}    [i:990]
-						  {$UI.HappinessWords.Dislike} [i:103]
-						  {$UI.HappinessWords.Hate}    [i:3509]
+						{$CommonTooltips.Pickaxes}
 						'''
 				}
 
@@ -568,10 +745,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be math symbols.
-						  {$UI.HappinessWords.Love}    ×
-						  {$UI.HappinessWords.Like}    +
-						  {$UI.HappinessWords.Dislike} -
-						  {$UI.HappinessWords.Hate}    ÷
+						{$CommonTooltips.MathSymbols}
 						'''
 				}
 
@@ -582,10 +756,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be math symbols.
-						  {$UI.HappinessWords.Love}    [i:HeartStatue]
-						  {$UI.HappinessWords.Like}    [i:StarStatue]
-						  {$UI.HappinessWords.Dislike} [i:ImpStatue]
-						  {$UI.HappinessWords.Hate}    [i:GloomStatue]
+						{$CommonTooltips.Statues}
 						'''
 				}
 
@@ -596,10 +767,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be math symbols.
-						  {$UI.HappinessWords.Love}    [i:Heart]
-						  {$UI.HappinessWords.Like}    [i:Star]
-						  {$UI.HappinessWords.Dislike} [i:LivingFireBlock]
-						  {$UI.HappinessWords.Hate}    [i:Skull]
+						{$CommonTooltips.HeartsAndSkulls}
 						'''
 				}
 
@@ -610,10 +778,7 @@ Mods: {
 						{$Label}
 
 						The labels for the categories will be math symbols.
-						  {$UI.HappinessWords.Love}    [i:1482]
-						  {$UI.HappinessWords.Like}    [i:5248]
-						  {$UI.HappinessWords.Dislike} [i:4723]
-						  {$UI.HappinessWords.Hate}    [i:1475]
+						{$CommonTooltips.Paintings}
 						'''
 				}
 			}

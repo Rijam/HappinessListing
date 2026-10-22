@@ -1,11 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
-using System.IO;
-using System.Reflection;
 using Terraria;
 using Terraria.GameContent;
-using Terraria.ModLoader;
 using Terraria.UI.Chat;
 
 namespace HappinessListing
@@ -54,7 +50,8 @@ namespace HappinessListing
 			{
 				DeleteWhole = true,
 				// Text = $"[hlhi:{text}]"
-				Text = $"   " // Can't be an empty string or it doesn't show up at all.
+				Text = $"    " // Can't be an empty string or it doesn't show up at all.
+				// Four spaces == 24px
 			};
 		}
 

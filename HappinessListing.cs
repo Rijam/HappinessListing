@@ -33,6 +33,7 @@ namespace HappinessListing
 			BestiaryEntryModifications.NPCBlackList = null;
 			LineEntryModifications.NPCBlackList = null;
 			RegularDialogueModifications.NPCBlackList = null;
+			PortraitNameModifications.NPCBlackList = null;
 		}
 
 		public override object Call(params object[] args)
@@ -67,12 +68,12 @@ namespace HappinessListing
 				case "MaximumTextLines":
 					return ModContent.GetInstance<HappinessListingConfig>().MaxTextLines; // Int
 
-				// Config value for "Color Code Dialogue"
-				case "ColorCodeText":
-				case "ColorCodeDialogue":
+				// Config value for "Color Code Happiness Dialogue"
+				case "ColorCodeHappinessText":
+				case "ColorCodeHappinessDialogue":
 					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeHappinessText; // Enum
-				case "ColorCodeTextToString":
-				case "ColorCodeDialogueToString":
+				case "ColorCodeHappinessTextToString":
+				case "ColorCodeHappinessDialogueToString":
 					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeHappinessText.ToString(); // String
 
 				// Config value for "Princess Dialogue Maximum"
@@ -85,6 +86,34 @@ namespace HappinessListing
 					return ModContent.GetInstance<HappinessListingConfig>().SimplifiedHappinessDialogue; // Enum
 				case "SimplifiedHappinessDialogueToString":
 					return ModContent.GetInstance<HappinessListingConfig>().SimplifiedHappinessDialogue.ToString(); // String
+
+				// Config value for "Color Code Regular Dialogue"
+				case "ColorCodeRegularText":
+				case "ColorCodeRegularDialogue":
+					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeRegularDialogue; // Enum
+				case "ColorCodeRegularTextToString":
+				case "ColorCodeRegularDialogueToString":
+					return ModContent.GetInstance<HappinessListingConfig>().ColorCodeRegularDialogue.ToString(); // String
+
+				// Config value for "Portrait Happiness Icon Type"
+				case "PortraitNameIconType":
+				case "PortraitHappinessIconType":
+					return ModContent.GetInstance<HappinessListingConfig>().PortraitNameIconType; // Enum
+				case "PortraitNameIconTypeToString":
+				case "PortraitHappinessIconTypeToString":
+					return ModContent.GetInstance<HappinessListingConfig>().PortraitNameIconType.ToString(); // String
+
+				// Config value for "Portrait Happiness Percentage"
+				case "PortraitHappinessPercentage":
+					return ModContent.GetInstance<HappinessListingConfig>().PortraitHappinessPercentage; // Bool
+				case "PortraitHappinessPercentageToString":
+					return ModContent.GetInstance<HappinessListingConfig>().PortraitHappinessPercentage.ToString(); // String
+
+				// Config value for "Color Code Portrait Name"
+				case "ColorCodePortraitName":
+					return ModContent.GetInstance<HappinessListingConfig>().ColorCodePortraitName; // Enum
+				case "ColorCodePortraitNameToString":
+					return ModContent.GetInstance<HappinessListingConfig>().ColorCodePortraitName.ToString(); // String
 
 				// Config value for "Bestiary Happiness Info Box"
 				case "BestiaryFlavorTextEntry":
@@ -101,6 +130,22 @@ namespace HappinessListing
 				case "LineEntryModificationsBlackListNPC":
 					LineEntryModifications.NPCBlackList.Add(((NPC)args[1]).type);
 					return LineEntryModifications.NPCBlackList.Contains(((NPC)args[1]).type); // Bool: True if it was added successfully.
+
+				// Add your NPC to the a blacklist so its regular dialogue won't get modified.
+				case "RegularDialogueModificationsBlackListType":
+					RegularDialogueModifications.NPCBlackList.Add((int)args[1]);
+					return RegularDialogueModifications.NPCBlackList.Contains((int)args[1]); // Bool: True if it was added successfully.
+				case "RegularDialogueModificationsBlackListNPC":
+					RegularDialogueModifications.NPCBlackList.Add(((NPC)args[1]).type);
+					return RegularDialogueModifications.NPCBlackList.Contains(((NPC)args[1]).type); // Bool: True if it was added successfully.
+
+				// Add your NPC to the a blacklist so its portrait name won't get modified.
+				case "PortraitNameModificationsBlackListType":
+					PortraitNameModifications.NPCBlackList.Add((int)args[1]);
+					return PortraitNameModifications.NPCBlackList.Contains((int)args[1]); // Bool: True if it was added successfully.
+				case "PortraitNameModificationsBlackListNPC":
+					PortraitNameModifications.NPCBlackList.Add(((NPC)args[1]).type);
+					return PortraitNameModifications.NPCBlackList.Contains(((NPC)args[1]).type); // Bool: True if it was added successfully.
 
 				// Add your NPC to the a blacklist so it won't receive the info box with happiness information.
 				case "BestiaryFlavorTextEntryBlackListType":

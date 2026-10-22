@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
@@ -27,6 +28,10 @@ namespace HappinessListing
 			MethodInfo method_PrepareCache = typeof(TextDisplayCache).GetMethod("PrepareCache", BindingFlags.Instance | BindingFlags.Public);
 			MonoModHooks.Modify(method_PrepareCache, IL_TextDisplayCache_PrepareCache);
 			// IL_TextDisplayCache.PrepareCache += IL_TextDisplayCache_PrepareCache;
+			//MethodInfo method_DrawNPCPortrait = typeof(Main).GetMethod("DrawNPCPortrait", BindingFlags.Static | BindingFlags.Public);
+			//MonoModHooks.Modify(method_DrawNPCPortrait, IL_Main_DrawNPCPortrait);
+			IL_Main.DrawNPCPortrait += IL_Main_DrawNPCPortrait;
+			On_Main.DrawNPCPortrait += On_Main_DrawNPCPortrait;
 #if TML144
 			Terraria.IL_Main.TextDisplayCache.PrepareCache += TextDisplayCache_PrepareCache;
 #endif
@@ -164,9 +169,13 @@ namespace HappinessListing
 		}
 		*/
 
+		/// <summary>
+		/// Does an IL edit to change how many lines can be drawn in the NPC dialogue menu.
+		/// </summary>
+		/// <param name="il"></param>
 		private void IL_TextDisplayCache_PrepareCache(ILContext il)
 		{
-			Type type_Main_TextDisplayCache = typeof(Main).GetNestedType("TextDisplayCache", BindingFlags.NonPublic);
+			// Type type_Main_TextDisplayCache = typeof(Main).GetNestedType("TextDisplayCache", BindingFlags.NonPublic);
 
 			/* original code.
 			 * Editing that 10 down there which is the max lines
@@ -190,8 +199,15 @@ namespace HappinessListing
 				ModContent.GetInstance<HappinessListing>().Logger.Debug("Patch 2 of IL_TextDisplayCache_PrepareCache unable to be applied! ");
 				return; // Patch unable to be applied
 			}
+
+			// Works, but it only runs once during mod load.
+			// c.Emit(OpCodes.Pop); // Pop the 10.
+			// c.Emit(OpCodes.Ldc_I4, ModContent.GetInstance<HappinessListingConfig>().MaxTextLines); // Push the config value in its place.
+
 			c.Emit(OpCodes.Pop); // Pop the 10.
-			c.Emit(OpCodes.Ldc_I4, ModContent.GetInstance<HappinessListingConfig>().MaxTextLines); // Push the config value in its place.
+			MethodInfo maxLinesMethod = typeof(LineEntryModifications)
+					.GetMethod("MaxLinesConfigValue", BindingFlags.NonPublic | BindingFlags.Static);
+			c.Emit(OpCodes.Call, maxLinesMethod); // Push a method call to my method that gets the config value.
 		}
 
 #if Disabled
@@ -416,6 +432,66 @@ namespace HappinessListing
 			regularDialogue += orig(self); // Run the original code
 			RegularDialogueModifications.ApplyPostEntryModificationsForRegularDialogue(ref regularDialogue);
 			return regularDialogue;
+		}
+
+		/// <summary>
+		/// Does an IL edit to change the color of the NPC's name under their portrait.
+		/// </summary>
+		/// <param name="il"></param>
+		private static void IL_Main_DrawNPCPortrait(ILContext il)
+		{
+			ILCursor c = new(il);
+
+			// string givenName = nPC.GivenName;
+			// DynamicSpriteFont value3 = FontAssets.ItemStack.Value;
+			// Vector2 vector2 = value3.MeasureString(givenName);
+			// float num19 = 1f;
+			// ChatManager.DrawColorCodedStringWithShadow(spriteBatch, value3, givenName, vector + new Vector2(0f, num2 + 1), Microsoft.Xna.Framework.Color.White, 0f, vector2 / 2f, Vector2.One * num19);
+			//																													^ Modifying this color
+
+			// The first Color.White is the color of the portrait image.
+			if (!c.TryGotoNext(i => i.MatchCall<Microsoft.Xna.Framework.Color>("get_White")))
+			{
+				ModContent.GetInstance<HappinessListing>().Logger.Debug("Patch 1a of IL_Main_DrawNPCPortrait unable to be applied! ");
+				return; // Patch unable to be applied
+			}
+			// The second Color.White is the color of the name.
+			if (!c.TryGotoNext(i => i.MatchCall<Microsoft.Xna.Framework.Color>("get_White")))
+			{
+				ModContent.GetInstance<HappinessListing>().Logger.Debug("Patch 1b of IL_Main_DrawNPCPortrait unable to be applied! ");
+				return; // Patch unable to be applied
+			}
+			var replacement = il.Module.ImportReference(
+				typeof(PortraitNameModifications)
+					.GetMethod("ModifyPortraitNameColor", BindingFlags.NonPublic | BindingFlags.Static)
+			);
+			c.Next.Operand = replacement; // Replace the get_White call with my method.
+
+
+			// Trying to edit the givenName. Image chat tags look weird and color tags override the DrawColorCodedStringWithShadow color parameter.
+			/*
+			var local17 = il.Body.Variables[17];
+
+			if (!c.TryGotoNext(MoveType.After, i => i.OpCode == OpCodes.Stloc_S && i.Operand is VariableDefinition v && v.Index == 17))
+			{
+				ModContent.GetInstance<HappinessListing>().Logger.Debug("Patch 1 of IL_Main_DrawNPCPortrait unable to be applied! ");
+				return; // Patch unable to be applied
+			}
+			c.Emit(OpCodes.Ldstr, PortraitNameModifications.ModifyPortraitName());
+			c.Emit(OpCodes.Stloc_S, local17); // Push the config value in its place.
+			*/
+		}
+
+		/// <summary>
+		/// Detours DrawNPCPortrait and calls orig first so things can run after.
+		/// </summary>
+		/// <param name="orig"></param>
+		/// <param name="chatBack"></param>
+		/// <param name="npcChatTopLeft"></param>
+		private void On_Main_DrawNPCPortrait(On_Main.orig_DrawNPCPortrait orig, Microsoft.Xna.Framework.Color chatBack, Microsoft.Xna.Framework.Vector2 npcChatTopLeft)
+		{
+			orig(chatBack, npcChatTopLeft);
+			PortraitNameModifications.DrawIconUnderName(npcChatTopLeft);
 		}
 	}
 }
